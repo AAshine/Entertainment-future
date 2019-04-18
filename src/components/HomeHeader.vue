@@ -68,37 +68,14 @@
                     <div class="text-center">
                         <a href="" class="side-brand"><img src="assets/images/logov2.png" alt=""></a>
                     </div>
-                    <p class="m-top-40 text-black">We’re a leading Internet Digital Marketing Company who offers SEO, 
-                        Paid Search, Social Media, ConsultingLead Generation, Brand Reputation 
-                        Management, and Web Design Services.</p>
+                    <p class="m-top-40 text-black">
+                        杭州娱未文化科技有限公司杭州娱未文化科技有限公司杭杭州娱未文化科技有限公司杭州娱未文化科技有限公司杭州娱未文化科技有限公司杭州娱未文化科技有限公司州娱未文化科技有限公司杭州娱未文化科技有限公司
+                    </p>
 
                     <div class="title m-top-70">
-                        <h2 class="text-black">Sign in to your account</h2>
+                        <h2 class="text-black">杭州娱未文化</h2>
                         <div class="separator"><span></span><span></span><span></span></div>
                     </div>
-                    <form class="m-top-40">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username or Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-round">Login</button>
-                            <div class="checkbox pull-right m-top-20">
-                                <label>
-                                    <input type="checkbox"> Check me out
-                                </label>
-                            </div>
-                            <div class="checkbox p-top-40">
-                                <label>
-                                    <input type="checkbox"> Forgot my Password?
-                                </label>
-                            </div>
-                        </div>
-                        <div class="divider"></div>
-                        <p class="text-center">Don't have an account yet? <a href="">Register an account</a></p>
-                    </form>
                     <div class="socail-bookmark">
                         <div class="col-md-12 m-top-80">
                             <div class="title">
@@ -107,10 +84,9 @@
                             </div>
                             <div class="contact-boxv1-item m-top-30">
                                 <ul class="list-inline">
-                                    <li><a href=""><i class="icon icon-social-2"></i></a></li>
-                                    <li><a href=""><i class="icon icon-social-1"></i></a></li>
-                                    <li><a href=""><i class="icon icon-social-network"></i></a></li>
-                                    <li><a href=""><i class="icon icon-social"></i></a></li>
+                                    <li><a href=""><i class="icon icon-douyinhao"></i></a></li>
+                                    <li><a href=""><i class="icon icon-weibo-copy"></i></a></li>
+                                    <li><a href=""><i class="icon icon-weixin"></i></a></li>
                                 </ul>
                             </div>
                         </div><!-- End off col-md-4 -->
@@ -121,11 +97,12 @@
                             </div>
                             <div class="contact-boxv1-item m-top-30">
                                 <div class="boxv1-item-img">
-                                    <img src="assets/images/location-img.png" alt="">
+                                    <i class="iconsize icon-dizhiguanli iconcolor0"></i>
                                 </div>
                                 <div class="boxv1-item-content text-black">
-                                    <p class="m-top-10 text-black">1877 Perry Street Swartz Creekson,
-                                        MI 48473</p>
+                                    <p class="m-top-10 text-black">
+                                        杭州市滨江区
+                                        </p>
                                 </div>
                             </div>
                         </div><!-- End off col-md-4 -->
@@ -136,11 +113,11 @@
                             </div>
                             <div class="contact-boxv1-item m-top-30">
                                 <div class="boxv1-item-img">
-                                    <img src="assets/images/phone-fax-img.png" alt="">
+                                    <i class="iconsize icon-zuoji iconcolor1"></i>
                                 </div>
                                 <div class="boxv1-item-content text-black">
-                                    <p class="m-top-10">Phone:  (012) 345 - 6789 <br>
-                                        Fax:  555 - 675 0037</p>
+                                    <p class="m-top-10">移动电话:  (012) 345 - 6789 <br>
+                                        座机:  555 - 675 0037</p>
                                 </div>
                             </div>
                         </div><!-- End off col-md-4 -->
@@ -151,7 +128,7 @@
                             </div>
                             <div class="contact-boxv1-item m-top-30">
                                 <div class="boxv1-item-img">
-                                    <img src="assets/images/envelop-img-02.png" alt="">
+                                   <i class="iconsize icon-youxiang iconcolor2"></i>
                                 </div>
                                 <div class="boxv1-item-content text-black">
                                     <p class="m-top-10">Info:  seo@info.com <br>
@@ -161,12 +138,12 @@
                         </div><!-- End off col-md-4 -->
                         <div class="col-md-12 m-top-80">
                             <div class="title">
-                                <h4 class="text-black">Working Hours</h4>
+                                <h4 class="text-black">上班时间</h4>
                                 <div class="separator"><span></span><span></span><span></span></div>
                             </div>
                             <div class="contact-boxv1-item m-top-30">
                                 <div class="boxv1-item-img">
-                                    <img src="assets/images/clock-img.png" alt="">
+                                    <i class="iconsize icon-shangbanshijian iconcolor3"></i>
                                 </div>
                                 <div class="boxv1-item-content text-black">
                                     <p class="">Monday to Saturday: 8:00am - 9:00pm
@@ -196,5 +173,19 @@ export default{
 .navbar-header img
     width 110px
 .navbar-brand
-    margin-top -10px
+    margin-top -10px;
+.iconsize
+    font-size:48px;
+.iconcolor0{
+    color:purple
+    }
+.iconcolor1{
+    color:red;
+    }
+.iconcolor2{
+    color:green;
+    }
+.iconcolor3{
+    color: orange
+    }
 </style>
