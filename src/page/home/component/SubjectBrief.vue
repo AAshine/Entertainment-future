@@ -84,6 +84,7 @@ export default {
   & .SubjectImgBorder {
     background: rgba(147, 8, 197, 1);
     border: 1px solid #fff;
+    box-shadow: 0 0 8px 3px rgba(147, 8, 197, 0.35);
   }
   & .iconfont{
   font-size: 32px;

@@ -8,8 +8,6 @@
 		                            <span class="post">{{item.teacherText}}</span>
 									
 		                            <ul class="icon">
-		                                <li><a href="#"><i class="fa fa-search"></i></a></li>
-		                                <li><a href="#"><i class="fa fa-link"></i></a></li>
 		                            </ul>
 		                        </div>
 		</div>

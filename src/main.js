@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import vuex from 'vuex'
 import $ from 'jquery'
+import api from './api/install'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import BackTop from './page/home/component/BackTop/src/BackTop'
 import Vuelidate from 'vuelidate'
@@ -11,7 +13,8 @@ Vue.use(iView)
 Vue.use(Vuelidate)
 Vue.use(VueAwesomeSwiper)
 Vue.use(BackTop)
-
+Vue.use(vuex)
+Vue.use(api)
 import "../src/assets/icon/iconfont.css";
 import "swiper/dist/css/swiper.min.css";
 import "../src/assets/css/plugins.css";

@@ -1,19 +1,19 @@
 <template>
     <div class="classmate">
-        <div class="classmateChoice" v-for="classmateDates in classmateDate">
+        <div class="classmateChoice" v-for="(classmateDates,index) in classmateDate" :key="index">
         <div class="classmateNumber">
             <div class="classmateImage">
-                <img :src="classmateDates.imgUrl">
+                <img :src="couldUrl+classmateDates.imgUrl">
             </div>
-            <p>{{classmateDates.programName}}</p>
+            <p>{{classmateDates.name}}</p>
             <div class="classmateIntro">
                 <div class="classLook">
                     <i class="icon-fensi iconfontfensi"></i>
-                    <span>108.6w</span>
+                    <span>{{classmateDates.fans}}</span>
                     </div>
                 <div class="classPeople">
                     <i class="icon-fensi icon-renyuanguanli1"></i>
-                    <span>咸鱼怎么翻身</span>
+                    <span>{{classmateDates.click}}</span>
                     </div>
             </div>
         </div>
@@ -21,46 +21,30 @@
 </div>
 </template>
 <script>
+// import axios from 'axios'
 export default {
     name:'classmateChoice',
     data(){
       return {
-          classmateDate:[
-                      {
-                          id:'001',
-                          programName:'项目一案例测试',
-                          imgUrl: require('../../../assets/images/1.jpg'),
-                          //        imgUrl:tImg
-                          LookNumber:'108.6w',
-                          wirter:'咸鱼是怎么翻身的'
-                      },
-                        {
-                          id:'002',
-                          programName:'项目一案例测试',
-                          imgUrl: require('../../../assets/images/1.jpg'),
-                          //        imgUrl:tImg
-                          LookNumber:'108.6w',
-                          wirter:'咸鱼是怎么翻身的'
-                      },
-                        {
-                          id:'003',
-                          programName:'项目一案例测试',
-                          imgUrl: require('../../../assets/images/1.jpg'),
-                          //        imgUrl:tImg
-                          LookNumber:'108.6w',
-                          wirter:'咸鱼是怎么翻身的'
-                      },
-                                            {
-                          id:'004',
-                          programName:'项目一案例测试',
-                          imgUrl: require('../../../assets/images/1.jpg'),
-                          //        imgUrl:tImg
-                          LookNumber:'108.6w',
-                          wirter:'咸鱼是怎么翻身的'
-                      }
-          ]
+          classmateDate:[],
+          couldUrl:'http://ppdeo8e31.bkt.clouddn.com/'
       }
   },
+created() {
+    this.matches()
+  },
+  methods: {
+    async matches() {
+      // 这里用try catch包裹，请求失败的时候就执行catch里的
+      try {
+        let res = await this.$api.matches.matches()
+        this.classmateDate = res.data
+        console.log(res)
+      } catch (e) {
+        console.log('​catch -> e', e)
+      }
+    }
+  }
 }
 </script>
 <style lang="stylus">
@@ -69,4 +53,5 @@ export default {
     align-items center
 .classmateIntro span 
     margin-left 5px
+    // https://api.nytimes.com/svc/topstories/v2/home.json?api-key=6ho9ezO7mWKMqXLAD4pFdopZRUfpQCYH
 </style>

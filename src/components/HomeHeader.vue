@@ -4,21 +4,12 @@
             <div class="container-fluid"> 
                 <div class="row"> 
                     <!-- Start Top Search -->
-                    <div class="top-search">
-                        <div class="container">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                            </div>
-                        </div>
-                    </div>
+
                     <!-- End Top Search -->
                     <div class="container">
                         <div class="row">
                             <div class="attr-nav">
                                 <ul>
-                                    <li class="search"><a href="#" class="hv1"><i class="fa fa-search"></i></a></li>
                                     <li id="open-button" class="side-menu">
                                         <a href="#">
                                             <span class="icon-01"></span>
@@ -101,7 +92,7 @@
                                 </div>
                                 <div class="boxv1-item-content text-black">
                                     <p class="m-top-10 text-black">
-                                        杭州市滨江区
+                                        杭州市滨江区某某街道某某号某某栋层
                                         </p>
                                 </div>
                             </div>
@@ -131,8 +122,8 @@
                                    <i class="iconsize icon-youxiang iconcolor2"></i>
                                 </div>
                                 <div class="boxv1-item-content text-black">
-                                    <p class="m-top-10">Info:  seo@info.com <br>
-                                        Salse:  seo@salse.com</p>
+                                    <p class="m-top-10">yuwei@qq.com <br>
+                                        yuwei@qq.com</p>
                                 </div>
                             </div>
                         </div><!-- End off col-md-4 -->
@@ -146,8 +137,7 @@
                                     <i class="iconsize icon-shangbanshijian iconcolor3"></i>
                                 </div>
                                 <div class="boxv1-item-content text-black">
-                                    <p class="">Monday to Saturday: 8:00am - 9:00pm
-                                        Sunday: Closed</p>
+                                    <p class="">星期一到星期五 早上9:00-下午18:00</p>
                                 </div>
                             </div>
                         </div><!-- End off col-md-4 -->

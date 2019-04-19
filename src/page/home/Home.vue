@@ -59,7 +59,7 @@ export default {
     Choice,
     HomeFooter,
     BackTop
-  },
+  }
 }
 </script>
 // 只在当前vue模板文件中有效
