@@ -1,11 +1,11 @@
 <template>
     <div class="classmate">
-        <div class="classmateChoice" v-for="(classmateDates,index) in classmateDate" :key="index">
+        <div class="classmateChoice" v-for="(classmateDates,index) in classmateDate.slice(0, 4)" :key="classmateDates.id">
         <div class="classmateNumber">
             <div class="classmateImage">
                 <img :src="couldUrl+classmateDates.imgUrl">
             </div>
-            <p>{{classmateDates.name}}</p>
+            <router-link :to="{path:'/article',query:{ id:classmateDates.id }}"><p>{{classmateDates.name}}</p></router-link>
             <div class="classmateIntro">
                 <div class="classLook">
                     <i class="icon-fensi iconfontfensi"></i>
@@ -21,7 +21,6 @@
 </div>
 </template>
 <script>
-// import axios from 'axios'
 export default {
     name:'classmateChoice',
     data(){
@@ -44,6 +43,10 @@ created() {
         console.log('​catch -> e', e)
       }
     }
+  },
+  selectItem(item){
+    console.log(classmateDates.id)
+    this.$emit('select',item)
   }
 }
 </script>
@@ -53,5 +56,4 @@ created() {
     align-items center
 .classmateIntro span 
     margin-left 5px
-    // https://api.nytimes.com/svc/topstories/v2/home.json?api-key=6ho9ezO7mWKMqXLAD4pFdopZRUfpQCYH
 </style>

@@ -1,12 +1,13 @@
 <template>
 <div class="teacherMess">
 	  <div class="teachertodo">
-             <div class="box" v-for="(item, index) in teacherUser" :key="index">
-		                        <img :src="item.imgUrl">
+             <div class="box" v-for="(item, index) in teacherUser.slice(0, 4)" :key="item.id">
+		                        <img :src="couldUrl+item.imgUrl">
 		                        <div class="box-content">
-		                            <h3 class="title">老师简介</h3>
-		                            <span class="post">{{item.teacherText}}</span>
-									
+		                            <h3 class="title">{{item.title}}</h3>
+									<span class="post">{{item.sex}}</span>
+		                            <span class="post">{{item.digest}}</span>
+									<span class="post">{{item.remark}}</span>
 		                            <ul class="icon">
 
 		                            </ul>
@@ -36,9 +37,25 @@
                 {teacherText:'给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派',
                   imgUrl:require('../../../../assets/images/teacher1.png')
               }
-          ]
+		  ],
+		  couldUrl:'http://ppdeo8e31.bkt.clouddn.com/'
+      }
+	},
+  created() {
+    this.teacher()
+  },
+  methods: {
+    async teacher() {
+      // 这里用try catch包裹，请求失败的时候就执行catch里的
+      try {
+        let res = await this.$api.matches.teacher()
+        this.teacherUser = res.data
+        console.log(res)
+      } catch (e) {
+        console.log('​catch -> e', e)
       }
     }
+  }
   }
 </script>
 <style scoped>

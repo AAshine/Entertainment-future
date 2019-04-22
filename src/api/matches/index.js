@@ -7,5 +7,17 @@ export default {
   matches(params) {
     // return出去了一个promise
     return api.get(urls.matches,params, header)
+  },
+  news(params) {
+    // return出去了一个promise
+    return api.get(urls.news,params, header)
+  },
+  teacher(params) {
+    // return出去了一个promise
+    return api.get(urls.teacher,params, header)
+  },
+  question(params) {
+    // return出去了一个promise
+    return api.get(urls.question,params, header)
   }
 }
