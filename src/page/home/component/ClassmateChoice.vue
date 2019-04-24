@@ -2,10 +2,10 @@
     <div class="classmate">
         <div class="classmateChoice" v-for="(classmateDates,index) in classmateDate.slice(0, 4)" :key="classmateDates.id">
         <div class="classmateNumber">
-            <div class="classmateImage">
+            <div class="classmateImage" @click="push(classmateDates)">
                 <img :src="couldUrl+classmateDates.imgUrl">
             </div>
-            <router-link :to="{path:'/article',query:{ id:classmateDates.id }}"><p>{{classmateDates.name}}</p></router-link>
+            <p @click="push(classmateDates)">{{classmateDates.name}}</p>
             <div class="classmateIntro">
                 <div class="classLook">
                     <i class="icon-fensi iconfontfensi"></i>
@@ -42,11 +42,16 @@ created() {
       } catch (e) {
         console.log('​catch -> e', e)
       }
+    },
+    //跳转页面，到指定的路由上，修改浏览器中的url
+    push(item){
+      this.$router.push({
+        name:'article',
+        params:{
+          id:item.id
+        }
+      })
     }
-  },
-  selectItem(item){
-    console.log(classmateDates.id)
-    this.$emit('select',item)
   }
 }
 </script>

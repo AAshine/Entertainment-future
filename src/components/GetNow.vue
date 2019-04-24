@@ -14,7 +14,8 @@
 <style lang="stylus">
 .getNow
     border 1px solid green
-    height 250px
+    width 420px
+    height 308px
     background #493c98
     margin-top:20px
     display flex

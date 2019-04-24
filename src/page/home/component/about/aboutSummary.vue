@@ -25,22 +25,26 @@
     margin-bottom 50px
 .InSummary .SummaryLeft
     position: relative
-    min-width: 400px
-    max-width: 600px
+    width 470px
+    height 500px
+.SummaryRight
+  margin-left 30px
+  width:700px
+  height 500px
 .SummaryRight img
-    min-width: 600px
-    max-width: 800px
+  width 100%
+  height 100%
 .InSummary .summaryTop
     font-size 21px
     font-weight 600
-    padding 10px 0 10px 15px
+    padding 92px 0 30px 0
     color black
+    font-size 36px
 .InSummary .summaryContent
-
     text-indent 2em
-    padding: 5px
-    line-height: 21px
-    letter-spacing 1px
+    line-height: 32px
+    letter-spacing 2px
+    font-size 18px
 .InSummary .SummaryBtn
     position: absolute
     bottom 40px

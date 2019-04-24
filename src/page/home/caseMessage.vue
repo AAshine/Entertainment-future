@@ -69,8 +69,8 @@ export default {
 }
 .demo {
   display: inline-block;
-  width: 25%;
-
+  width: 285px;
+  height:334px;
   -webkit-box-sizing: padding-box;
   box-sizing: padding-box;
 }
@@ -85,6 +85,9 @@ export default {
   text-align: center;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.demo img{
+  height: 334px;
 }
 img {
   border: none;

@@ -14,10 +14,6 @@
                 </div>
             </div>
         </div>
-        
-        <div class="pageNumber">
-            <Page :total="100" />
-        </div>
     </div>
 </template>
 <script>
@@ -64,15 +60,17 @@ export default {
 .teacherOneTab
     display flex    
     flex-flow row wrap
+    margin-top:40px
 .teacherContent
     display flex
-    width 220px
-    margin 10px
-    max-width 220px
-    max-height 400px
+    width 250px
+    height 362px
+    padding 5px
+    max-width 250px
+    max-height 362px
 .teacherContent img
-    width 100%
-    max-height 300px
+    width 250px
+    height 160px
     overflow hidden
 .teacherTxtImg
     display: flex;
@@ -84,9 +82,10 @@ export default {
     font-size 18px
 .teacherBottom
     display flex
+    height 32px
     justify-content space-around
     background: #f5f5f5
-    padding 10px
+    line-height 32px
 .pageNumber
     margin 30px auto
 .teacherBottom i

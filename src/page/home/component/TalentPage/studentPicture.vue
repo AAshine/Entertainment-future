@@ -80,8 +80,10 @@
 		    text-align: center;
 		    overflow: hidden;
 		    position: relative;
-            width: 20%;
-            margin: 10px;
+						/* width: 20%; */
+				width: 285px;
+				height:350px;
+        margin: 10px;
 		}
 .box img{
     width: 100%;

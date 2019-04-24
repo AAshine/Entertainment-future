@@ -46,7 +46,7 @@
 .bg-prople
         background #493c98
 .footerContent
-    padding 50px
+    padding 80px
     display flex
     justify-content center
 .footerA
@@ -57,7 +57,7 @@
     color #dddaec
     text-align center
     & .footerBA,.footerBB,.footerBC
-        margin 0 10px 0 10px
+        margin-left 80px
     & p
         padding 5px
 .footerC
@@ -67,6 +67,8 @@
 .footerC img 
     width 120px
     cursor pointer
+.footerCA
+    margin-left 126px
 .footerCA,.footerCB
-    padding 10px
+    padding-right 80px
 </style>

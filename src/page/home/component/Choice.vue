@@ -60,15 +60,17 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom 20px
+  margin-bottom 80px
 }
 
 .subjectBriefA {
   cursor: pointer;
   border-radius: 5px;
   transition: all 0.4s;
-  max-height 400px
-  min-height 300px
+  width 270px
+  height 375px
+  max-width 270px
+  max-height 375px
   display flex
   justify-content center
   align-items center

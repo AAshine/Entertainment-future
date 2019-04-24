@@ -6,7 +6,7 @@
                     <img :src="item.imgUrl" alt="">
                 </div>
                 <div class="teacherTxt">
-                    <p>{{item.newTitle}}</p>
+                    <div class="bigVname"><p>{{item.newTitle}}</p></div>
                     <div class="teacherBottom">
                         <span><i class="icon-yanjing-"></i>{{item.newRead}}</span>
                         <span><i class="icon-fensi"></i>666</span>
@@ -74,28 +74,37 @@ export default {
     flex-flow row wrap
     width 1200px
     margin 0 auto
+    margin-bottom 80px
 .teacherContent
     display flex
-    width 25%
+    width 285px
+    height 400px
     margin 5px
     max-width 280px
     max-height 450px
 .teacherContent img
-    width 100%
+    width 285px
+    height 300px
     overflow hidden
 .teacherTxtImg
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
+.bigVname
+    height 50px
+    border-left 1px solid #f5f5f5
+    border-right 1px solid #f5f5f5
 .teacherTxt p
     text-align center
     padding 10px
-    font-size 18px
+    font-size 24px
 .teacherBottom
     display flex
     justify-content space-around
     background: #f5f5f5
     padding 10px
+    border 1px solid #e1e1e1
 .pageNumber
     margin 30px auto
+
 </style>

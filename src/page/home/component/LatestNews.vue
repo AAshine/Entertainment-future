@@ -44,24 +44,7 @@ export default {
     data(){
         return {
             doubt: '1',
-            newsContent:[
-                {
-                    id: '001',
-                    title:'新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1',
-                    imgUrl:require('../../../assets/images/2.jpg'),
-                    contents:'新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻',
-                    time:'2018-07-25',
-                    peopleNumber:'999'
-                },
-                {
-                    id: '002',
-                    title:'新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1',
-                    imgUrl:require('../../../assets/images/2.jpg'),
-                    contents:'新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻新闻新闻新闻1新闻',
-                    time:'2018-07-25',
-                    peopleNumber:'888'
-                }
-            ],
+            newsContent:[],
             questionanswer:[],
             couldUrl:'http://ppdeo8e31.bkt.clouddn.com/'
         }
@@ -86,10 +69,9 @@ export default {
       // 这里用try catch包裹，请求失败的时候就执行catch里的
       try {
         let res = await this.$api.matches.news()
-        let questionanswer = await this.$api.matches.question()
         this.newsContent = res.data
+        let questionanswer = await this.$api.matches.question()
         this.questionanswer = questionanswer.data
-console.log(questionList)
       } catch (e) {
         console.log('​catch -> e', e)
       }
@@ -139,26 +121,28 @@ console.log(questionList)
         width 380px
         height 330px;
         max-width 380px
-        max-height 330px
+        max-height 331px
+        cursor pointer
         & img 
             width 100%
             height 100%
     & .lastestTitle
         font-size 18px
-        padding 5px
+        padding 20px 0 16px 0
         text-overflow: ellipsis;
         overflow: hidden; 
         max-height 78px
+        cursor pointer
     & .lastestText
         text-overflow: ellipsis;
         overflow: hidden; 
         max-height 70px
-        padding 5px
-        text-indent 2em
+        padding 5px 0 5px 0
     & .lastestTime
         display flex
-        justify-content space-between
-        padding 10px
+        padding 10px 0 10px 0
+.textTime
+    margin-right 20px
 #panelDoubt .ivu-collapse
     background-color #493c98
     border none

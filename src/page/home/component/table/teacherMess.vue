@@ -22,22 +22,7 @@
   export default {
     data() {
       return {
-          teacherUser:[
-              {
-				  teacherText:'卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型',
-                  imgUrl:require('../../../../assets/images/teacher1.png')
-              },
-                {teacherText:'给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派',
-                  imgUrl:require('../../../../assets/images/teacher1.png')
-			  },
-			  {
-				  teacherText:'卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型卡通恶搞造型',
-                  imgUrl:require('../../../../assets/images/teacher1.png')
-              },
-                {teacherText:'给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派给我欧派',
-                  imgUrl:require('../../../../assets/images/teacher1.png')
-              }
-		  ],
+          teacherUser:[],
 		  couldUrl:'http://ppdeo8e31.bkt.clouddn.com/'
       }
 	},
@@ -83,8 +68,9 @@
 		    text-align: center;
 		    overflow: hidden;
 		    position: relative;
-            width: 250px;
-            margin-right: 20px;
+				width: 285px;
+				height: 350px;
+        margin-right: 20px;
 		}
 .box img{
     width: 100%;

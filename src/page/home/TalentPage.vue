@@ -5,9 +5,6 @@
               <h3>学员作品</h3>
           </div>
           <OutstandStundet/>
-        <div class="TitlePublic">
-              <h3>优秀学员</h3>
-          </div>
           <standStudent/>
         <div class="TitlePublic">
               <h3>保障体系</h3>

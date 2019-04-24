@@ -23,7 +23,7 @@
       <h3>合作机构</h3>
     </div>
     <div class="pictureImg">
-      <div class="demo" v-for="(item, index) in hezuo" :key="index">
+      <div class="demo hezuodemo" v-for="(item, index) in hezuo" :key="index">
         <figure class="imghvr-slide-up">
           <img :src="item.imgUrl" alt="example-image">
           <figcaption>
@@ -168,8 +168,7 @@ export default {
   padding-bottom: 100px;
 
   & img {
-    max-width;
-    300px;
+    max-width:300px;
   }
 }
 
@@ -177,13 +176,23 @@ export default {
   width: 1200px;
   margin: 0 auto;
 }
-
+.specialDeom{
+  width:300px;
+  height:500px
+}
 .demo {
   display: inline-block;
   -webkit-box-sizing: padding-box;
   box-sizing: padding-box;
 }
-
+.hezuodemo{
+  border 1px solid #e1e1e1;
+  width 150px;
+  }
+.hezuodemo img {
+  width 150px;
+  max-height 70px;
+  }
 .demo textarea {
   -webkit-box-sizing: padding-box;
   box-sizing: padding-box;
@@ -224,8 +233,9 @@ img {
 }
 
 .pictureImg {
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
+  border 1px solid #e1e1e1
 }
 .contactMessage
     display flex
@@ -235,5 +245,8 @@ img {
     width 600px
     margin-left 50px
 .messageLeft
-  min-width 480px
+  width 570px
+  height 500px
+  border 1px solid #f5f5f5
+  padding-right: 40px;
 </style>

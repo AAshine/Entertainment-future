@@ -46,9 +46,10 @@ export default new Router({
       component:about
     },
     {
-      path:'/article',
+      path:'/article/:id',
       name:'article',
-      component:DetailsPage
+      component:DetailsPage,
+      props: true
     }
   ]
 })

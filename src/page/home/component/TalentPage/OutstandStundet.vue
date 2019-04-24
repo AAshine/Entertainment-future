@@ -63,16 +63,20 @@ export default {
     display flex    
     flex-flow row wrap
     flex-wrap wrap
-    width 960px
+    width 1260px
     justify-content center
     margin: 0 auto
 .teacherContent
     display flex
     margin 10px
-    max-width 220px
+    width 285px
+    height 400x
+    max-width 285px
     max-height 400px
 .teacherContent img
     width 100%
+    width 285px
+    height 300px
     max-height 300px
     overflow hidden
 .teacherTxtImg
@@ -81,15 +85,20 @@ export default {
     justify-content: space-between; 
 .teacherTxt p
     text-align center
-    padding 10px
-    font-size 18px
+    padding 14px 0 14px 0
+    font-size 24px
+    border-left 1px solid #f5f5f5
+    border-right 1px solid #f5f5f5
 .teacherBottom
     display flex
     justify-content space-around
     background: #f5f5f5
-    padding 10px
+    height 50px
+    align-items: center
 .pageNumber
-    margin 30px auto
+    margin 30px auto    
+.teacherBottom
+    border 1px solid #e1e1e1
 .teacherBottom i
     margin-right 5px
 </style>

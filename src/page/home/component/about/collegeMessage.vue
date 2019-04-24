@@ -1,5 +1,7 @@
 <template>
-    <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+<div class="collegeMessage">
+    <div class="collegeTitle">娱未新视听学院线上报名系统</div>
+        <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
         <FormItem label="姓名" prop="name">
             <Input v-model="formValidate.name" placeholder="姓名"></Input>
         </FormItem>
@@ -17,6 +19,7 @@
             <Button @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
         </FormItem>
     </Form>
+</div>
 </template>
 <script>
     export default {
@@ -61,3 +64,10 @@
         }
     }
 </script>
+<style lang="stylus">
+.collegeTitle
+    font-size 24px
+    color #000
+    text-align center
+    padding 20px 0 20px 0
+</style>

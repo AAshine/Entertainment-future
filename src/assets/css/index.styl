@@ -9,9 +9,10 @@ body, dl, dd, h1, h2, h3, h4, h5, h6, p, form
     background #493c98
     display: flex
     justify-content: center
-    padding:10px
+    height: 400px
+    align-items: center
     & .HomefooterL,.HomefooterR
-        padding 15px
+        padding 0 25px 0 25px
 .HomefooterR
     display: flex
 .HomefooterR
@@ -20,15 +21,17 @@ body, dl, dd, h1, h2, h3, h4, h5, h6, p, form
         border 1px solid #989a97
         background #493c98
         padding 10px
-        width 250px
+        width 280px
+        height 55px
         font-size: 12px
     & textarea, .submitIn
-        margin 0 10px 0 10px
+        margin-top 20px
         background #493c98
     & textarea
-        width: 790px
-        height: 160px
+        width: 900px
+        height: 137px
         padding: 10px
+        margin 0
     & textarea::-webkit-input-placeholder
         color #989a97
         font-size: 12px
@@ -62,21 +65,22 @@ body, dl, dd, h1, h2, h3, h4, h5, h6, p, form
 .formPackage
     display: flex
 .formPackageA
-    margin: 5px 10px 5px 10px
+    margin: 0 30px 17px 0;
 .BtnSubmit button 
     border 1px solid #989a97 
     padding 10px
-.typo__p
+.typo__pHomefooterL
     font-size: 12px;
     color: #f79483;
     padding 5px
 .HomefooterL > p
     color: #fefffa
-    padding-top 2px
+    margin-bottom: 32px
+    font-size: 18px
 .HomefooterL
     & p:first-child
-        font-size: 28px
-        padding 15px 0 15px 0
+        font-size: 36px
+        margin-bottom: 50px;
 //课程选择
 .classmate
     display: flex
@@ -90,9 +94,11 @@ body, dl, dd, h1, h2, h3, h4, h5, h6, p, form
         & p
             padding 10px
             color #343434
+            cursor: pointer
     & img 
         width 285px;
-        height 180px
+        height 275px
+        cursor: pointer
     & .classmateIntro
         display flex
         justify-content: space-between
@@ -108,9 +114,10 @@ body, dl, dd, h1, h2, h3, h4, h5, h6, p, form
     margin-top 50px
     justify-content center
 .classLeft
-    width 720px
+    width 750px
 .classRight
-    width 360px
+    // width 420px
+    margin-left 30px
 //课程 banner
 #CourserDetails{
     position: relative;
@@ -197,3 +204,8 @@ body, dl, dd, h1, h2, h3, h4, h5, h6, p, form
     font-size 16px
     font-weight 600
     color #333333
+//左右div 复用
+.classLeft
+    width 750px
+.classRight
+    width: 420px

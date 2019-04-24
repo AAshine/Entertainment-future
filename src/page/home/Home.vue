@@ -17,7 +17,7 @@
         <div class="TitlePublic">
               <h3>成功案例</h3>
           </div>
-          <ClassmateChoice/>
+          <ClassmateChoice></ClassmateChoice>
           <CustomerReviews/>
           <LatestNews/>
           <div class="TitlePublic">
@@ -65,7 +65,7 @@ export default {
 // 只在当前vue模板文件中有效
 <style lang="stylus">
 .bannerImg
-    height 480px
+    height 600px
 .bannerImg img
     width 100%
     height 100%

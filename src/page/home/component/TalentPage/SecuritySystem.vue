@@ -57,7 +57,7 @@ export default {
     
 }
 </script>
-<style lang="stylus">
+<style lang="stylus" scoped>
 .SecuritySystem
     display flex
     justify-content center
@@ -66,13 +66,17 @@ export default {
 .advantage 
     display flex
     justify-content center
-    margin-bottom 20px
-    max-width  1260px
-.advantage > div
-    width 50%
+    margin-bottom 80px
+    // max-width  1260px
+// .advantage > div
+//     width 50%
 .advantageTxt
     padding 10px
+    width 960px;
     & p
         padding 5px 0 0 0
+.advantageImg
+    width 960px
+    height 500px
 </style>
 

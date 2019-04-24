@@ -6,17 +6,13 @@
                     <img :src="item.imgUrl" alt="">
                 </div>
                 <div class="teacherTxt">
-                    <p>{{item.musictName}}</p>
+                    <div class="teachername"><p>{{item.musictName}}</p></div>
                     <div class="teacherBottom">
                         <span><i class="icon-yanjing-"></i>9999</span>
                         <span><i class="icon-fensi"></i>666</span>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="pageNumber">
-            <Page :total="100" />
         </div>
     </div>
 </template>
@@ -55,23 +51,34 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+.teacherImg
+    width 240px
+    height 300px
 .teacherOneTab
+    margin-top:30px
     display flex    
     flex-flow row wrap
 .teacherContent
     display flex
-    width 220px
-    margin 10px
-    max-width 220px
-    max-height 400px
+    margin-bottom 15px
+    margin-left 15px
+.teacherOneTab .teacherContent:nth-child(1),.teacherOneTab .teacherContent:nth-child(4)
+    margin-left 0
 .teacherContent img
     width 100%
     max-height 300px
     overflow hidden
 .teacherTxtImg
+    width 240px;
+    height 400px
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
+.teachername
+    border-left 1px solid #f5f5f5
+    border-right 1px solid #f5f5f5
+.teacherBottom
+    border 1px solid #e1e1e1
 .teacherTxt p
     text-align center
     padding 10px
@@ -82,7 +89,7 @@ export default {
     background: #f5f5f5
     padding 10px
 .pageNumber
-    margin 30px auto
+    margin 0px auto
 .teacherBottom i
     margin-right 5px
 </style>

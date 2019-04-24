@@ -205,7 +205,7 @@ export default {
 .contentTEXT{
     width: 800px;
     box-sizing: border-box;
-    height: 300px;
+    height: 220px;
 }
 *{
   box-sizing: border-box;
@@ -218,7 +218,7 @@ export default {
 .window{
   position:relative;
   width:800px;
-  height:300px;
+  height:220px;
   margin:0 auto;
   overflow:hidden;
 }
@@ -270,7 +270,7 @@ img{
 }
 .customerDiv
     background #ededed
-    min-height 300px
+    min-height 220px
     display flex
     justify-content space-around
 .customerContent

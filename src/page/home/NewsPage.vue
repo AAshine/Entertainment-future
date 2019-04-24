@@ -11,6 +11,9 @@
                 <ContactUs/>
             </div>
        </div>
+        <div id="pageNumber" class="pageNumber">
+            <Page :total="100" />
+        </div>
     </div>
 </template>
 <script>
@@ -27,6 +30,17 @@ export default {
     }
 }
 </script>
-<style lang="stylus">
-
+<style lang="stylus" scoped>
+.pageNumber
+    margin 25px auto
+    width 1200px
+    height 70px
+    background #f5f5f5
+    border 1px soild #e1e1e1
+.pageNumber  >>> .ivu-page
+     display flex
+     justify-content center
+     padding 19px 0 19px 0
+.pageNumber  >>> .ivu-page-item-active
+     border-color #9208c5
 </style>

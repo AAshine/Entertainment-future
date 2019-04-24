@@ -21,14 +21,15 @@
 .InSummary
     display flex
     justify-content: center
-    margin-top 50px 
+    margin-top 80px 
 .InSummary .SummaryLeft
     position: relative
     min-width: 400px
     max-width: 600px
+    margin-right:32px
 .SummaryRight img
-    min-width: 600px
-    max-width: 800px
+    max-width: 570px
+    height:350px
 .InSummary .summaryTop
     font-size 21px
     font-weight 600
@@ -42,13 +43,17 @@
     letter-spacing 1px
 .InSummary .SummaryBtn
     position: absolute
-    bottom 40px
+    bottom 25px
     left 40px
     display: flex
     justify-content: center
     align-content: center
     padding:5px 0 5px 0
-    width: 130px
+    width: 200px
+    height 50px
+    line-height 40px
+    font-size 18px
+    font-weight 600
     color: black;
     border 1px solid #a21fcd
     border-radius: 30px;

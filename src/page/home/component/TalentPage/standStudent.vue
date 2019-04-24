@@ -1,5 +1,8 @@
 <template>
 <div class="standDiv">
+          <div class="TitlePublic">
+              <h3>优秀学员</h3>
+          </div>
     <div class="standStudent">
     <div class="carousel-wrap" id="carousel">
     <transition-group tag="ul" class='slide-ul' name="list">
@@ -82,7 +85,8 @@ export default {
   flex-wrap: wrap;
 }
 .standDiv{
-    background: #ededed;
+  margin-top:80px;
+  background: #ededed;
 }
 .standStudent{
     display: flex;
@@ -91,8 +95,8 @@ export default {
 }
 .carousel-wrap {  
   position: relative;
-
-  width: 100%;
+  width: 1260px;
+  margin: 0 auto;
   overflow: hidden;
 
 }

@@ -40,6 +40,8 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+#panelDoubt
+    width 420px
 .panelTitle
     font-size 21px
     font-weight 600

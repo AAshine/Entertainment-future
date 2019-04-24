@@ -94,8 +94,8 @@ export default {
 }
 
 .subjectOne {
-  width: 220px;
-  margin: 20px;
+  width: 300px;
+
 
   & p {
     text-align: center;
