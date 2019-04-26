@@ -1,14 +1,14 @@
 <template>
 <div class="teacherMess">
 	  <div class="teachertodo">
-             <div class="box" v-for="(item, index) in teacherUser.slice(0, 4)" :key="item.id">
+             <div class="box"  @click="push(item)" v-for="(item, index) in teacherUser.slice(0, 4)" :key="item.id">
 		                        <img :src="couldUrl+item.imgUrl">
 		                        <div class="box-content">
 		                            <h3 class="title">{{item.title}}</h3>
 									<span class="post">{{item.sex}}</span>
 		                            <span class="post">{{item.digest}}</span>
 									<span class="post">{{item.remark}}</span>
-		                            <ul class="icon">
+		                            <ul class="icon" >
 
 		                            </ul>
 		                        </div>
@@ -39,6 +39,15 @@
       } catch (e) {
         console.log('​catch -> e', e)
       }
+		},
+		    //跳转页面，到指定的路由上，修改浏览器中的url
+    push(item){
+      this.$router.push({
+        name:'teacher',
+        params:{
+          id:item.id
+        }
+      })
     }
   }
   }
@@ -71,6 +80,7 @@
 				width: 285px;
 				height: 350px;
         margin-right: 20px;
+				cursor: pointer;
 		}
 .box img{
     width: 100%;

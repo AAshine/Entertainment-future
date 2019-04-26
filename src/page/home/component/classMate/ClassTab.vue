@@ -6,9 +6,6 @@
           <ClassObject/>
           </div>
         </Tab-pane>
-        <Tab-pane label="委托培养" name="name2">22222222</Tab-pane>
-        <Tab-pane label="人才预定" name="name3">3</Tab-pane>
-        <Tab-pane label="达人输出" name="name4">4</Tab-pane>
     </Tabs>
 </template>
 <script>

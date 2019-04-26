@@ -46,7 +46,7 @@ created() {
     //跳转页面，到指定的路由上，修改浏览器中的url
     push(item){
       this.$router.push({
-        name:'article',
+        name:'casePage',
         params:{
           id:item.id
         }

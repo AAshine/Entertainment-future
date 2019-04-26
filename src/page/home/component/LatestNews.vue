@@ -5,7 +5,7 @@
           </div>
           <div class="lastestThress">
               <div class="lastestContent" v-for="(item, index) in newsContent.slice(0, 2)" :key="item.id">
-                  <div class="lastestImg">
+                  <div class="lastestImg" @click="push(item)">
                       <img :src="couldUrl+item.imgUrl" alt="">
                   </div>
                   <div class="lastestTitle">
@@ -76,6 +76,15 @@ export default {
         console.log('​catch -> e', e)
       }
     },
+        //跳转页面，到指定的路由上，修改浏览器中的url
+    push(item){
+      this.$router.push({
+        name:'newsDetails',
+        params:{
+          id:item.id
+        }
+      })
+    }
   },
     filters: {
       formatDate: function (value) {

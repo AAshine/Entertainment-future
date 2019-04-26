@@ -7,7 +7,9 @@ import TeacherPage from '@/page/home/TeacherPage'
 import NewsPage from '@/page/home/NewsPage'
 import caseMessage from '@/page/home/caseMessage'
 import about from '@/page/home/about'
-import DetailsPage from '@/page/home/DetailsPage'
+import casePage from '@/page/home/casePage'
+import newsDetails from '@/page/home/newsDetails'
+import teacherDetails from '@/page/home/teacherDetails'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -46,9 +48,21 @@ export default new Router({
       component:about
     },
     {
-      path:'/article/:id',
-      name:'article',
-      component:DetailsPage,
+      path:'/casePage/:id',
+      name:'casePage',
+      component:casePage,
+      props: true
+    },
+    {
+      path:'/newsDetails/:id',
+      name:'newsDetails',
+      component:newsDetails,
+      props: true
+    },
+    {
+      path:'/teacher/:id',
+      name:'teacher',
+      component:teacherDetails,
       props: true
     }
   ]

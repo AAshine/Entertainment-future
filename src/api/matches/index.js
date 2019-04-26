@@ -2,7 +2,6 @@
 import api from '../index'
 import urls from './urls'
 const header = {}
-
 export default {
   matches(params) {
     // return出去了一个promise
@@ -20,8 +19,13 @@ export default {
     // return出去了一个promise
     return api.get(urls.question,params, header)
   },
-  detail(params) {
+  //文章详情页
+  newArt() {
+    // return出去了一个api地址
+    return urls.newArt
+  },
+  caseArt() {
     // return出去了一个promise
-    return api.get(urls.detail,params, header)
+    return urls.caseArt
   }
 }

@@ -4,5 +4,7 @@ export default {
   news : baseUrl + '/api/yw/app/news/home-list',
   teacher: baseUrl+ '/api/yw/app/teacher/home-list',
   question: baseUrl+ '/api/yw/app/troubleshooting/home-list',
-  detail: baseUrl+ '/api/yw/app/case/3'
+//详情页调用api 新闻 案例
+  newArt: baseUrl + '/api/yw/app/news/',
+  caseArt: baseUrl +'/api/yw/app/case/'
 }

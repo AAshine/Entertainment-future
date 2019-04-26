@@ -9,6 +9,7 @@ import BackTop from './page/home/component/BackTop/src/BackTop'
 import Vuelidate from 'vuelidate'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+
 Vue.use(iView)
 Vue.use(Vuelidate)
 Vue.use(VueAwesomeSwiper)
