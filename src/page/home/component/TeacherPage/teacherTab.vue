@@ -1,7 +1,14 @@
 <template>
     <Tabs value="name1" id="classTab">
         <Tab-pane label="抖音培训" name="name1">
-          <teahcerOneTab/>
+<div class="contentPa">
+            <div class="contentTop">
+            <teahcerOneTab></teahcerOneTab>
+          </div>
+          <div class="pageNumber">
+            <Page :total="100"></Page>
+          </div>
+</div>
         </Tab-pane>
         <Tab-pane label="委托培养" name="name2">22222222</Tab-pane>
         <Tab-pane label="人才预定" name="name3">3</Tab-pane>
@@ -22,6 +29,9 @@ import teahcerOneTab from '../TeacherPage/teacherOneTab'
     }
 </script>
 <style lang="stylus">
+// .pageNumber
+//   display flex
+//   justify-content center
 #classTab .ivu-tabs-nav-scroll
   width 720px
   display flex
@@ -33,4 +43,11 @@ import teahcerOneTab from '../TeacherPage/teacherOneTab'
   justify-content center
 #classTab .ivu-tabs-ink-bar
   background-color #9208c5
+.contentTop
+  display flex
+  justify-content center
+.pageNumber
+    display flex
+    justify-content center
+    margin-top:30px
 </style>

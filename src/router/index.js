@@ -28,9 +28,14 @@ export default new Router({
       component: TalentPage,
     },
     {
-      path: '/teacher',
-      name:'/teacher',
+      path: '/business',
+      name:'/business',
       component: TeacherPage,
+    },
+    {
+      path: '/news/:id',
+      name:'newlist',
+      component: NewsPage,
     },
     {
       path: '/news',
@@ -56,6 +61,12 @@ export default new Router({
     {
       path:'/newsDetails/:id',
       name:'newsDetails',
+      component:newsDetails,
+      props: true
+    },
+    {
+      path:'/newsDetails/:id',
+      name:'remen',
       component:newsDetails,
       props: true
     },

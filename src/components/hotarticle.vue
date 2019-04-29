@@ -3,21 +3,39 @@
         <div class="hottitle">
             <p>热门文章</p>
         </div>
-        <div class="articleDiv">
-            <div class="artImg">
-                <img src="" alt="">
+        <div class="articleDiv" v-for="(item,index) in hotart">
+            <div @click="push(item)"  class="artImg">
+                <img :src="coudUrl+item.imgUrl" alt="">
             </div>
             <div class="artText">
-                <p>文章标题</p>
-                <p>时间：<span></span> 点击：<span></span> </p>
-                <p>文章见解简介文章见解简介文章见解简介文章见解简介文简介文章见解简介文章见解简介文简介文章见解简介文章见解简介文章见解简介文章见解简介文章见解简介文章见解简介文章见解简介文章见解简介</p>
+                <p>{{item.title}}</p>
+                <p>时间：{{item.publishTime | formatDate}}<span></span> 点击：{{hotart[index].click}}<span></span> </p>
+                <p>{{item.digest}}</p>
             </div>
         </div>
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
-    
+    data(){
+      return {
+          coudUrl:'http://ppdeo8e31.bkt.clouddn.com/'
+      }  
+    },
+    props:{
+        hotart:{}
+    },
+    methods:{
+    push(item){
+      this.$router.push({
+        name:'newsDetails',
+        params:{
+          id:item.id
+        }
+      })
+    }
+    }
 }
 </script>
 <style lang="stylus">

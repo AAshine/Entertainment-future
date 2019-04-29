@@ -11,14 +11,11 @@
                 <ContactUs/>
             </div>
        </div>
-        <div id="pageNumber" class="pageNumber">
-            <Page :total="100" />
-        </div>
     </div>
 </template>
 <script>
 import NewsTab from '../home/component/NewsPage/NewsTab'
-import HotCourse from '../home/component/NewsPage/HotCourse'
+import HotCourse from '../../components/HotCourse'
 import GetNow from '../../components/GetNow'
 import ContactUs from '../../components/ContactUs'
 export default {

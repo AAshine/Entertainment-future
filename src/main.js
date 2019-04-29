@@ -9,7 +9,6 @@ import BackTop from './page/home/component/BackTop/src/BackTop'
 import Vuelidate from 'vuelidate'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
-
 Vue.use(iView)
 Vue.use(Vuelidate)
 Vue.use(VueAwesomeSwiper)
@@ -38,6 +37,24 @@ Vue.prototype.$jquerytouchSwipe = jquerytouchSwipe;
 Vue.prototype.$bootsnav = bootsnav;
 Vue.prototype.$jqueryformchimp = jqueryformchimp;
 Vue.config.productionTip = false
+//创建全局过滤器 时间格式
+Vue.filter('formatDate', function (value) {
+let date = new Date(value);
+    let y = date.getFullYear();
+    let MM = date.getMonth() + 1;
+    MM = MM < 10 ? ('0' + MM) : MM;
+    let d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    let h = date.getHours();
+    h = h < 10 ? ('0' + h) : h;
+    let m = date.getMinutes();
+    m = m < 10 ? ('0' + m) : m;
+    let s = date.getSeconds();
+    s = s < 10 ? ('0' + s) : s;
+    return y + '-' + MM + '-' + d
+})
+
+var formatDate = Vue.filter('formatDate')
 new Vue({
   el: '#app',
   router,

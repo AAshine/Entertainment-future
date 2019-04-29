@@ -6,7 +6,7 @@
         <div class="title">{{detailData.name}}</div>
         <div class="titleBr"></div>
         <div class="simpleMess">
-          <div class="simpletime">时间：<span>{{detailData.updateTime}}</span></div>
+          <div class="simpletime">时间：<span>{{detailData.updateTime | formatDate}}</span></div>
           <div class="simpletime">来源：<span>{{detailData.sortNum}}</span></div>
           <div class="simpletime">作者：<span>{{detailData.operator}}</span></div>
           <div class="simpletime">点击：<span>{{detailData.click}}</span></div>
@@ -16,10 +16,6 @@
             
           </div>
           <img :src="couldUrl+detailData.imgUrl" alt="">
-        </div>
-        <div class="updown">
-          <span>上一篇:</span>
-          <span @click="jump()">下一篇:</span>
         </div>
       </div>
       <div class="detailRight">
@@ -32,18 +28,21 @@
 </template>
 <script>
 import axios from 'axios'
-import HotCourse from '../home/component/TeacherPage/HotCourse'
+import HotCourse from '../../components/HotCourse'
 import GetNow from '../../components/GetNow'
 import ContactUs from '../../components/ContactUs'
+import hotarticle from '../../components/hotarticle'
 export default {
   name:'DetailPage',
   components:{
         GetNow,
         ContactUs,
-        HotCourse
+        HotCourse,
+        hotarticle
   },
     data(){
       return {
+          hotart:[],//热门文章的调用
           detailData:[],
           couldUrl:'http://ppdeo8e31.bkt.clouddn.com/'
       }
@@ -62,7 +61,6 @@ export default {
               //拿到news api public
               const url = currentCase+`${caselID}`
               axios.get(url).then((res)=>{
-                console.log(res.data)
                 this.detailData = res.data.data
               })
             }catch(e){

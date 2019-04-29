@@ -4,20 +4,26 @@ import urls from './urls'
 const header = {}
 export default {
   matches(params) {
-    // return出去了一个promise
     return api.get(urls.matches,params, header)
   },
   news(params) {
-    // return出去了一个promise
     return api.get(urls.news,params, header)
   },
   teacher(params) {
-    // return出去了一个promise
     return api.get(urls.teacher,params, header)
   },
   question(params) {
-    // return出去了一个promise
     return api.get(urls.question,params, header)
+  },
+  hotlist(params) {
+    return api.get(urls.hotlist,params, header)
+  },
+  hotclass(params) {
+    return api.get(urls.hotclass,params, header)
+  },
+  //新闻总列表
+  newsAll() {
+    return urls.newsAll
   },
   //文章详情页
   newArt() {
@@ -25,7 +31,6 @@ export default {
     return urls.newArt
   },
   caseArt() {
-    // return出去了一个promise
     return urls.caseArt
   }
 }

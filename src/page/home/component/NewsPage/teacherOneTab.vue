@@ -1,15 +1,15 @@
 <template>
     <div class="teacherOneTab">
-        <div class="teacherContent" v-for="(item,index) in newList" :key="index">
-            <div class="teacherTxtImg">
+        <div class="teacherContent" v-for="(item,index) in newsList" :key="index">
+            <div @click="push(item)" class="teacherTxtImg">
                 <div class="teacherImg">
-                    <img :src="item.imgUrl" alt="">
+                    <img :src="couldUrl+item.imgUrl" alt="">
                 </div>
                 <div class="teacherTxt">
-                    <p>{{item.newTitle}}</p>
+                    <p>{{item.title}}</p>
                     <div class="teacherBottom">
-                        <span><i class="icon-yanjing-"></i>{{item.newRead}}</span>
-                        <span><i class="icon-fensi"></i>666</span>
+                        <span><i class="icon-yanjing-"></i>{{item.click}}</span>
+                        <span><i class="icon-fensi"></i>{{item.click}}</span>
                     </div>
                 </div>
             </div>
@@ -18,41 +18,20 @@
 </template>
 <script>
 export default {
-    data(){
-        return{
-            newList:[
-                {
-                    newTitle:'一号新闻',
-                    imgUrl:require('../../../../assets/images/1.jpg'),
-                    newRead:'980'
-                },
-                {
-                    newTitle:'一号新闻',
-                    imgUrl:require('../../../../assets/images/1.jpg'),
-                    newRead:'983'
-                },
-                {
-                    newTitle:'一号新闻',
-                    imgUrl:require('../../../../assets/images/1.jpg'),
-                    newRead:'982'
-                },
-                                {
-                    newTitle:'一号新闻',
-                    imgUrl:require('../../../../assets/images/1.jpg'),
-                    newRead:'981'
-                },
-                {
-                    newTitle:'一号新闻',
-                    imgUrl:require('../../../../assets/images/1.jpg'),
-                    newRead:'981'
-                },
-                {
-                    newTitle:'一号新闻',
-                    imgUrl:require('../../../../assets/images/1.jpg'),
-                    newRead:'981'
-                }
-            ]
+    props:{
+        newsList:{},
+        couldUrl:null
+    },
+    methods:{
+            //跳转页面到指定的路由上
+      push(item){
+      this.$router.push({
+        name:'newsDetails',
+        params:{
+          id:item.id
         }
+      })
+    }
     }
 }
 </script>
@@ -70,7 +49,7 @@ export default {
     max-height 362px
 .teacherContent img
     width 250px
-    height 160px
+    height 260px
     overflow hidden
 .teacherTxtImg
     display: flex;
@@ -80,14 +59,16 @@ export default {
     text-align center
     padding 10px
     font-size 18px
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    width:240px;
 .teacherBottom
     display flex
     height 32px
     justify-content space-around
     background: #f5f5f5
     line-height 32px
-.pageNumber
-    margin 30px auto
 .teacherBottom i
     margin-right 5px
 </style>

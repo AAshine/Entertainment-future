@@ -21,7 +21,7 @@
           <span @click="_uppage(),jumpup(),_requestIDup()">上一篇:{{Uptitlename}}</span>
           <span @click="_downpage(),jump(),_requestID()">下一篇:{{Nptitlename}}</span>
         </div>
-        <hotarticle></hotarticle>
+        <hotarticle :hotart="hotart" :key="key"></hotarticle>
       </div>
       <div class="detailRight">
         <HotCourse/>
@@ -33,7 +33,7 @@
 </template>
 <script>
 import axios from 'axios'
-import HotCourse from '../home/component/TeacherPage/HotCourse'
+import HotCourse from '../../components/HotCourse'
 import GetNow from '../../components/GetNow'
 import ContactUs from '../../components/ContactUs'
 import hotarticle from '../../components/hotarticle'
@@ -47,22 +47,53 @@ export default {
   },
     data(){
       return {
+          hotart:[],//热门文章的调用
           caselID:[],
           //上下页的id
-          titleData:null,
-          titleDataup:null,
+          titleData:0,
+          titleDataup:0,
           //上下页的title
           Nptitlename:null,
           Uptitlename:null,
           couldUrl:'http://ppdeo8e31.bkt.clouddn.com/'
       }
   },
+  watch: {
+    //监听路由，只要路由有变化(路径，参数等变化)都有执行下面的函数，你可以
+    $route: {
+        handler: function (val, oldVal) {
+    this._creatview(),
+    this._requestID(),
+    this._requestIDup(),
+    this._hotart()
+        },
+        deep: true
+    }
+},
+  computed:{
+    key() {
+// 或者 :key="$route.path" 只要保证key唯一就可以了
+return this.$route.name !== undefined? this.$route.name + +new Date(): this.$route + +new Date()
+}
+  },
     created() {
     this._creatview(),
     this._requestID(),
-    this._requestIDup()
+    this._requestIDup(),
+    this._hotart()
   },
   methods: {
+      async _hotart(){
+              //局部引用不用写this
+              // 这里用try catch包裹，请求失败的时候就执行catch里的
+            try{
+              let hotres = await this.$api.matches.hotlist()
+              this.hotart = hotres.data
+              console.log(this.hotart)
+            }catch(e){
+              console.log('​catch -> e', e)
+            }
+          },
      async _creatview(){
               //局部引用不用写this
               // 这里用try catch包裹，请求失败的时候就执行catch里的
@@ -77,6 +108,7 @@ export default {
             }catch(e){
               console.log('​catch -> e', e)
             }
+
           },
           //router 路由id加1 下一篇
       jump (item) {
@@ -107,7 +139,7 @@ export default {
               //拿到news api public
               const url = current+`${newID}`
               axios.get(url).then((res)=>{
-                this.titleData = res.data.data.id,
+                  this.titleData = res.data.data.id,
                 this.Nptitlename = res.data.data.title
               })
             }catch(e){
@@ -123,8 +155,8 @@ export default {
               //拿到news api public
               const url = current+`${newUp}`
               axios.get(url).then((res)=>{
-                this.titleDataup = res.data.data.id,
-                this.Uptitlename = res.data.data.title
+                  this.Uptitlename = res.data.data.title
+                  this.titleDataup = res.data.data.id
               })
             }catch(e){
               console.log('​catch -> e', e)
@@ -163,23 +195,7 @@ export default {
        },
   },
   //时间格式
-  filters: {
-      formatDate: function (value) {
-        let date = new Date(value);
-        let y = date.getFullYear();
-        let MM = date.getMonth() + 1;
-        MM = MM < 10 ? ('0' + MM) : MM;
-        let d = date.getDate();
-        d = d < 10 ? ('0' + d) : d;
-        let h = date.getHours();
-        h = h < 10 ? ('0' + h) : h;
-        let m = date.getMinutes();
-        m = m < 10 ? ('0' + m) : m;
-        let s = date.getSeconds();
-        s = s < 10 ? ('0' + s) : s;
-        return y + '-' + MM + '-' + d
-      }
-    }
+
 }
 </script>
 <style lang="stylus" scoped>

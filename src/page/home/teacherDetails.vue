@@ -32,7 +32,7 @@
 </template>
 <script>
 import axios from 'axios'
-import HotCourse from '../home/component/TeacherPage/HotCourse'
+import HotCourse from '../../components/HotCourse'
 import GetNow from '../../components/GetNow'
 import ContactUs from '../../components/ContactUs'
 export default {
