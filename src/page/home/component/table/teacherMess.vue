@@ -103,10 +103,6 @@
 		    left: 0;
 		    opacity: 0.5;
 		}
-.box img{
-		    width: 100%;
-		    height: auto;
-		}
 .box .box-content{
 		    width: 100%;
 		    padding: 14px 18px;

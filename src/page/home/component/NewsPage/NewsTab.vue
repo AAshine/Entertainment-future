@@ -4,10 +4,10 @@
       <div class="douyin">
         <div class="contentPa">
           <div class="contentTop">
- <teacherOneTab :newsList="newsList" :couldUrl="couldUrl"></teacherOneTab>
+            <teacherOneTab :newsList="newsList" :couldUrl="couldUrl"></teacherOneTab>
           </div>
           <div class="pageNumber">
- <Page :total="total" :page-size="pageSize" @on-change="handleCurrentChange"/>
+            <Page :total="total" :page-size="pageSize" @on-change="handleCurrentChange"/>
           </div>
         </div>
       </div>
@@ -50,6 +50,7 @@ export default {
         .then(res => {
           this.total = res.data.data.total;
           this.newsList = res.data.data.list;
+          console.log(this.newsList)
         });
     },
     handleCurrentChange(val) {
@@ -85,4 +86,7 @@ export default {
 #classTab .ivu-tabs-ink-bar {
   background-color: #9208c5;
 }
+.contentTop{
+  height :860px
+  }
 </style>

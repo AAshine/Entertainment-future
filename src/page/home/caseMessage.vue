@@ -71,6 +71,7 @@ export default {
   display: inline-block;
   width: 285px;
   height:334px;
+  margin: 5px;
   -webkit-box-sizing: padding-box;
   box-sizing: padding-box;
 }
@@ -87,6 +88,7 @@ export default {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .demo img{
+  width:285px;
   height: 334px;
 }
 img {

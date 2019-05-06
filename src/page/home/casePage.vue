@@ -17,6 +17,9 @@
           </div>
           <img :src="couldUrl+detailData.imgUrl" alt="">
         </div>
+          <div class="hotarticle">
+            <hotarticle :hotart="hotart"></hotarticle>
+          </div>
       </div>
       <div class="detailRight">
         <HotCourse/>
@@ -48,9 +51,21 @@ export default {
       }
   },
     created() {
-    this._creatview()
+    this._creatview(),
+    this._hotart()
   },
   methods: {
+          async _hotart(){
+              //局部引用不用写this
+              // 这里用try catch包裹，请求失败的时候就执行catch里的
+            try{
+              let hotres = await this.$api.matches.hotlist()
+              this.hotart = hotres.data
+              console.log(this.hotart)
+            }catch(e){
+              console.log('​catch -> e', e)
+            }
+          },
       async  _creatview(){
             let caselID=this.$route.params.id
               //局部引用不用写this

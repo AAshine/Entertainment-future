@@ -21,9 +21,32 @@ export default {
   hotclass(params) {
     return api.get(urls.hotclass,params, header)
   },
-  //新闻总列表
+  newlistid(params) {
+    return api.get(urls.newlistid,params, header)
+  },
+  //获取24条优秀学生的信息
+  StudentA(params){
+    return api.get(urls.StudentA,params, header)
+  },
+  //新闻总列表分页
   newsAll() {
     return urls.newsAll
+  },
+  //老师总列表分页
+  teacherAll() {
+    return urls.teacherAll
+  },
+  //案例总列表分页
+  caseAll() {
+    return urls.caseAll
+  },
+  //学生总列表分页
+  studentAll() {
+    return urls.studentAll
+  },
+   //学生总列表分页
+   darenAll() {
+    return urls.darenAll
   },
   //文章详情页
   newArt() {
@@ -32,5 +55,9 @@ export default {
   },
   caseArt() {
     return urls.caseArt
+  },
+  //根据分类调用课程信息
+  classCase(params){
+    return api.get(urls.classCase,params, header)
   }
 }

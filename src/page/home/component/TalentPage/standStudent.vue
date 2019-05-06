@@ -1,120 +1,128 @@
 <template>
-<div class="standDiv">
-          <div class="TitlePublic">
-              <h3>优秀学员</h3>
-          </div>
+  <div class="standDiv">
+    <div class="TitlePublic">
+      <h3>优秀学员</h3>
+    </div>
     <div class="standStudent">
-    <div class="carousel-wrap" id="carousel">
-    <transition-group tag="ul" class='slide-ul' name="list">
-      <li v-for="(list,index) in slideList" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
-        <!-- <a :href="list.clickUrl" >
-          <img :src="list.image" :alt="list.desc">
-        </a> -->
-        <standtPicture/>
-      </li>
-    </transition-group>
-    <div class="carousel-items">
-      <span v-for="(item,index) in slideList.length" :class="{'active':index===currentIndex}" @mouseover="change(index)"></span>
+      <div class="carousel-wrap" id="carousel">
+        <transition-group tag="ul" class="slide-ul" name="list">
+          <li
+            v-for="(list,index) in slideListAll"
+            :key="index"
+            v-show="index===currentIndex"
+            @mouseenter="stop"
+            @mouseleave="go"
+          >
+            <standtPicture :slideList="slideList" :couldUrl="couldUrl" v-model="showList"></standtPicture>
+          </li>
+        </transition-group>
+        <div class="carousel-items">
+          <span
+            v-for="(item,index) in slideListAll"
+            :class="{'active':index===currentIndex}"
+            @mouseover="change(index)"
+          ></span>
+        </div>
+      </div>
     </div>
-    </div>
-</div>
-</div>
+  </div>
 </template>
 <script>
-import standtPicture from '../TalentPage/studentPicture'
-import '../../../../assets/css/mediacss.css'
+import standtPicture from "../TalentPage/studentPicture";
+import "../../../../assets/css/mediacss.css";
 export default {
-      data() {
-          return{
-            slideList: [
-            {
-                "clickUrl": "#",
-                "desc": "nhwc",
-                // "image": "http://dummyimage.com/1745x492/f1d65b"
-            },
-            {
-                "clickUrl": "#",
-                "desc": "hxrj",
-                // "image": "http://dummyimage.com/1745x492/40b7ea"
-            },
-            {
-                "clickUrl": "#",
-                "desc": "rsdh",
-                // "image": "http://dummyimage.com/1745x492/e3c933"
-            }
-        ],
-        currentIndex: 0,
-        timer: ''
-          }
+  data() {
+    return {
+      slideListAll: 3,
+      slideList: [],
+      currentIndex: 0,
+      timer: "",
+      couldUrl: "http://ppdeo8e31.bkt.clouddn.com/"
+    };
+  },
+  components: {
+    standtPicture
+  },
+  created() {
+    this.$nextTick(() => {
+      this.timer = setInterval(() => {
+        this.autoPlay();
+      }, 8000);
+    }),
+      this._StudentA();
+  },
+  methods: {
+    go() {
+      this.timer = setInterval(() => {
+        this.autoPlay();
+      }, 8000);
     },
-    components:{
-        standtPicture
+    stop() {
+      clearInterval(this.timer);
+      this.timer = null;
     },
-    methods: {
-        go() {
-            this.timer = setInterval(() => {
-                this.autoPlay()
-            }, 8000)
-        },
-        stop() {
-            clearInterval(this.timer)
-            this.timer = null
-        },
-        change(index) {
-            this.currentIndex = index
-        },
-        autoPlay() {
-            this.currentIndex++
-            if (this.currentIndex > this.slideList.length - 1) {
-                this.currentIndex = 0
-            }
-        }
+    change(index) {
+      this.currentIndex = index;
     },
-    created() {
-        this.$nextTick(() => {
-            this.timer = setInterval(() => {
-                this.autoPlay()
-            }, 8000)
-        })
+    autoPlay() {
+      this.currentIndex++;
+      if (this.currentIndex > this.slideList.length - 1) {
+        this.currentIndex = 0;
+      }
+    },
+    async _StudentA() {
+      //局部引用不用写this
+      // 这里用try catch包裹，请求失败的时候就执行catch里的
+      try {
+        let StudentA = await this.$api.matches.StudentA();
+        this.slideList = StudentA.data;
+        console.log(this.slideList);
+      } catch (e) {
+        console.log("​catch -> e", e);
+      }
     }
-}
+  },
+  computed:{
+    showList:function(){
+  
+    }
+  }
+};
 </script>
 <style scoped>
-.teachertodo{
+.teachertodo {
   display: flex;
   flex-wrap: wrap;
 }
-.standDiv{
-  margin-top:80px;
+.standDiv {
+  margin-top: 80px;
   background: #ededed;
 }
-.standStudent{
-    display: flex;
+.standStudent {
+  display: flex;
   flex-wrap: wrap;
-    margin: 0 auto;
+  margin: 0 auto;
 }
-.carousel-wrap {  
+.carousel-wrap {
   position: relative;
   width: 1260px;
   margin: 0 auto;
   overflow: hidden;
-
 }
 
 .slide-ul {
   width: 100%;
   height: 100%;
 }
-.slide-ul  li {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-
-  }
+.slide-ul li {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 .slide-ul img {
-      width: 100%;
-      height: 100%;
-    }
+  width: 100%;
+  height: 100%;
+}
 .carousel-items {
   position: absolute;
   z-index: 10;
@@ -124,17 +132,17 @@ export default {
   text-align: center;
   font-size: 0;
 }
-.carousel-items  span {
-    display: inline-block;
-    height: 6px;
-    width: 30px;
-    margin: 0 3px;
-    background-color: #b2b2b2;
-    cursor: pointer;
-  }
+.carousel-items span {
+  display: inline-block;
+  height: 6px;
+  width: 30px;
+  margin: 0 3px;
+  background-color: #b2b2b2;
+  cursor: pointer;
+}
 .carousel-items .active {
-    background-color: #fff;
-  }
+  background-color: #fff;
+}
 
 .list-enter-to {
   transition: all 1s ease;
@@ -143,14 +151,14 @@ export default {
 
 .list-leave-active {
   transition: all 1s ease;
-  transform: translateX(-100%)
+  transform: translateX(-100%);
 }
 
 .list-enter {
-  transform: translateX(100%)
+  transform: translateX(100%);
 }
 
 .list-leave {
-  transform: translateX(0)
+  transform: translateX(0);
 }
 </style>

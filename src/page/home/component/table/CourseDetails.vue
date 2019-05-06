@@ -5,7 +5,7 @@
       class="slider-imgcontainer"
       ref="container"
     >
-      <img v-for="img in imgs" :src="img.url" alt="img.index">
+      <img v-for="img in classCase" :src="couldUrl+img.imgUrl" alt="img.index">
     </div>
     <!-- index -->
     <div class="slider-buttons">
@@ -13,8 +13,8 @@
             class="slider-imgindex"
             :class="{ 'slider-imgindex-active': currentIndex === button }"
             @mouseover="doTheAnimate(button)"
-            @mouseout="autoAnimate"
       ></span>
+       <!-- @mouseout="autoAnimate" -->
     </div>
     <!-- left right button -->
     <div class="slider-move">
@@ -27,6 +27,10 @@
 <script>
   export default {
     name: 'CourseDetails',
+    props:{
+      classCase:{},
+      couldUrl:{}
+    },
     data () {
       /**
        * @property {array} imgs 图片组
@@ -63,9 +67,9 @@
           }else if(arg && arg === 'right' && this.currentIndex >= 1){
             this.currentIndex --;
           }
-          if(!this.timer) {
-            this.autoAnimate();
-          }
+          // if(!this.timer) {
+          //   this.autoAnimate();
+          // }
         }
         this.move();
       },
@@ -73,22 +77,22 @@
        * @method
        * @desc 自动轮播图片
        */
-      autoAnimate() {
-        this.timer = setInterval(() => {
-          if(this.currentIndex === 2){
-            this.currentIndex = 0;
-          }else {
-            this.currentIndex ++ ;
-          }
-        //   this.move();
-        //如果在mounted钩子中使用$refs，如果ref是定位在有v-if、v-for、v-show中的DOM节点，返回来的只能是undefined，因为在mounted阶段他们根本不存在
-        },4000)
-      }
+      // autoAnimate() {
+      //   this.timer = setInterval(() => {
+      //     if(this.currentIndex === 2){
+      //       this.currentIndex = 0;
+      //     }else {
+      //       this.currentIndex ++ ;
+      //     }
+      //   //   this.move();
+      //   //如果在mounted钩子中使用$refs，如果ref是定位在有v-if、v-for、v-show中的DOM节点，返回来的只能是undefined，因为在mounted阶段他们根本不存在
+      //   },4000)
+      // }
     },
     computed:{
     },
     mounted () {
-        this.autoAnimate();
+        // this.autoAnimate();
     },
     updated:function(){
         this.$nextTick(() => {  

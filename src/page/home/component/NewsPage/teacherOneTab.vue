@@ -54,7 +54,6 @@ export default {
 .teacherTxtImg
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
 .teacherTxt p
     text-align center
     padding 10px

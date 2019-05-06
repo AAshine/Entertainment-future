@@ -80,7 +80,7 @@ export default {
     width 285px
     height 400px
     margin 5px
-    max-width 280px
+    max-width 285px
     max-height 450px
 .teacherContent img
     width 285px

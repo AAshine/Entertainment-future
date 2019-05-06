@@ -1,6 +1,6 @@
 <template>
     <div class="teacherOneTab">
-        <div class="teacherContent" v-for="(item,index) in teacherlist" :key="index">
+        <div class="teacherContent" v-for="(item,index) in caselist" :key="index">
             <div class="teacherTxtImg">
                 <div class="teacherImg">
           <div class="demo specialDeom">
@@ -14,10 +14,10 @@
           </div>
                 </div>
                 <div class="teacherTxt">
-                    <div class="teachername"><p>{{item.nikeName}}</p></div>
+                    <div class="teachername"><p>{{item.name}}</p></div>
                     <div class="teacherBottom">
-                        <span><i class="icon-yanjing-"></i>9999阅读</span>
-                        <span><i class="icon-fensi"></i>666喜欢</span>
+                        <span><i class="icon-yanjing-"></i>{{item.click}}</span>
+                        <span><i class="icon-fensi"></i>{{item.fans}}</span>
                     </div>
                 </div>
             </div>
@@ -27,14 +27,12 @@
 <script>
 export default {
     props:{
-        teacherlist:{},
+        caselist:{},
         couldUrl:null
     }
 }
 </script>
 <style lang="stylus" scoped>
-.imghvr-push-down
-    background:rgba(80,40,239,.5)
 .teacherImg
     width 255px
     height 300px
