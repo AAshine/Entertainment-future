@@ -47,7 +47,7 @@ export default {
       return {
           hotart:[],//热门文章的调用
           detailData:[],
-          couldUrl:'http://ppdeo8e31.bkt.clouddn.com/'
+          couldUrl:'http://file.kxdz2.com/'
       }
   },
     created() {
@@ -77,6 +77,7 @@ export default {
               const url = currentCase+`${caselID}`
               axios.get(url).then((res)=>{
                 this.detailData = res.data.data
+                console.log(this.detailData)
               })
             }catch(e){
               console.log('​catch -> e', e)

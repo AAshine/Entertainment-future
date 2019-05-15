@@ -14,7 +14,7 @@
 		                        </div>
 		</div>
   </div>
-  <div class="button"><router-link to="/classmate">讲师在线咨询</router-link></div>
+  <div class="button"><router-link to="/about">讲师在线咨询</router-link></div>
 </div>
 </template>
 
@@ -23,7 +23,7 @@
     data() {
       return {
           teacherUser:[],
-		  couldUrl:'http://ppdeo8e31.bkt.clouddn.com/'
+		  couldUrl:'http://file.kxdz2.com/'
       }
 	},
   created() {
@@ -35,20 +35,19 @@
       try {
         let res = await this.$api.matches.teacher()
         this.teacherUser = res.data
-        console.log(res)
       } catch (e) {
         console.log('​catch -> e', e)
       }
 		},
 		    //跳转页面，到指定的路由上，修改浏览器中的url
-    push(item){
-      this.$router.push({
-        name:'teacher',
-        params:{
-          id:item.id
-        }
-      })
-    }
+    // push(item){
+    //   this.$router.push({
+    //     name:'teacher',
+    //     params:{
+    //       id:item.id
+    //     }
+    //   })
+    // }
   }
   }
 </script>

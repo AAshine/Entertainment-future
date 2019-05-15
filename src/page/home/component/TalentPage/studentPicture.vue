@@ -1,10 +1,10 @@
 <template>
   <div class="teacherMess">
     <div class="teachertodo">
-      <div class="box" v-for="(item, index) in slideList" :key="index">
+      <div class="box" v-for="(item, index) of page" :key="item.id">
         <img :src="couldUrl+item.imgUrl">
         <div class="box-content">
-          <h3 class="title">老师简介</h3>
+          <h3 class="title">学生简介</h3>
           <span class="post">{{item.digest}}</span>
 
           <ul class="icon"></ul>
@@ -21,7 +21,8 @@
 export default {
   props: {
 		slideList: {},
-		couldUrl:{}
+    couldUrl:{},
+    page:{}
   }
 };
 </script>

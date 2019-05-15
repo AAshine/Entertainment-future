@@ -7,18 +7,18 @@
       <div class="carousel-wrap" id="carousel">
         <transition-group tag="ul" class="slide-ul" name="list">
           <li
-            v-for="(list,index) in slideListAll"
+            v-for="(page,index) of pages"
             :key="index"
             v-show="index===currentIndex"
             @mouseenter="stop"
             @mouseleave="go"
           >
-            <standtPicture :slideList="slideList" :couldUrl="couldUrl" v-model="showList"></standtPicture>
+            <standtPicture :slideList="slideList" :page="page" :couldUrl="couldUrl"></standtPicture>
           </li>
         </transition-group>
         <div class="carousel-items">
           <span
-            v-for="(item,index) in slideListAll"
+            v-for="(page,index) of pages"
             :class="{'active':index===currentIndex}"
             @mouseover="change(index)"
           ></span>
@@ -37,7 +37,7 @@ export default {
       slideList: [],
       currentIndex: 0,
       timer: "",
-      couldUrl: "http://ppdeo8e31.bkt.clouddn.com/"
+      couldUrl: "http://file.kxdz2.com/"
     };
   },
   components: {
@@ -66,25 +66,31 @@ export default {
     },
     autoPlay() {
       this.currentIndex++;
-      if (this.currentIndex > this.slideList.length - 1) {
+      if (this.currentIndex > this.pages.length - 1) {
         this.currentIndex = 0;
       }
     },
     async _StudentA() {
-      //局部引用不用写this
-      // 这里用try catch包裹，请求失败的时候就执行catch里的
       try {
         let StudentA = await this.$api.matches.StudentA();
         this.slideList = StudentA.data;
-        console.log(this.slideList);
       } catch (e) {
         console.log("​catch -> e", e);
       }
     }
   },
-  computed:{
-    showList:function(){
-  
+  computed: {
+    pages: function() {
+      const pages = [];
+      this.slideList.forEach((item, index) => {
+        const page = Math.floor(index / 8);
+        if (!pages[page]) {
+          pages[page] = [];
+          this.currentIndex = 0;
+        }
+        pages[page].push(item);
+      });
+      return pages;
     }
   }
 };

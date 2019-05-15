@@ -12,7 +12,6 @@
         </div>
       </div>
     </Tab-pane>
-    <Tab-pane label="疑问解答" name="name2">22222222</Tab-pane>
   </Tabs>
 </template>
 <script>
@@ -30,7 +29,7 @@ export default {
       pages: 1,
       pageSize: 6,
       currentPage: 1,
-      couldUrl: "http://ppdeo8e31.bkt.clouddn.com/"
+      couldUrl: "http://file.kxdz2.com/"
     };
   },
   created() {
@@ -50,12 +49,10 @@ export default {
         .then(res => {
           this.total = res.data.data.total;
           this.newsList = res.data.data.list;
-          console.log(this.newsList)
         });
     },
     handleCurrentChange(val) {
       this.currentPage = val;
-      console.log(this.currentPage);
       this._newsAll();
     }
   }

@@ -20,7 +20,7 @@ import axios from 'axios'
 export default {
     data(){
       return {
-          coudUrl:'http://ppdeo8e31.bkt.clouddn.com/'
+          coudUrl:'http://file.kxdz2.com/'
       }  
     },
     props:{
@@ -56,6 +56,7 @@ export default {
 .articleDiv img
     width 130px
     height 100px
+    cursor pointer
 .artText
     margin-top 8px
     margin-left 15px

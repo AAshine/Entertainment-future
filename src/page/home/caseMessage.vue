@@ -9,11 +9,11 @@
     <div class="caseMessages">
       <div class="demo" v-for="(item,index) in example" :key="index">
         <figure class="imghvr-reveal-right">
-          <img :src="item.imgUrl" alt="example-image">
+          <img :src="couldUrl+item.imgUrl" alt="example-image">
           <figcaption>
             <h3>案例介绍</h3>
-            <p>{{item.className}}</p>
-            <p>{{item.exampleText}}</p>
+            <p>{{item.name}}</p>
+            <p>{{item.details}}</p>
           </figcaption>
           <a href="javascript:;"></a>
         </figure>
@@ -23,7 +23,7 @@
       <h3>现有大V号</h3>
     </div>
     <div class="bigV">
-      <bigVnumber/>
+      <bigVnumber :caseEight="caseEight" :couldUrl="couldUrl"></bigVnumber>
     </div>
   </div>
 </template>
@@ -31,34 +31,41 @@
 import "../../assets/css/caseMessage.css";
 import bigVnumber from "../home/component/caseMessage/bigVnumber";
 export default {
-  data(){
+  data() {
     return {
-      example:[
-        {
-            className:'一号课程',
-            imgUrl: require('../../assets/images/teacher1.png'),
-            exampleText:'Life is too important to be taken seriously! 1'
-        },
-        {
-            className:'一号课程',
-            imgUrl: require('../../assets/images/teacher1.png'),
-            exampleText:'Life is too important to be taken seriously! 1'
-        },
-        {
-            className:'一号课程',
-            imgUrl: require('../../assets/images/teacher1.png'),
-            exampleText:'Life is too important to be taken seriously! 1'
-        },
-        {
-            className:'一号课程',
-            imgUrl: require('../../assets/images/teacher1.png'),
-            exampleText:'Life is too important to be taken seriously! 1'
-        }
-      ]
-    }
+      example: [],
+      caseEight:[],
+      couldUrl:'http://file.kxdz2.com/'
+    };
   },
   components: {
     bigVnumber
+  },
+  created() {
+    this._caseFour()
+    this._caseEight()
+  },
+  methods: {
+    async _caseFour() {
+      //局部引用不用写this
+      // 这里用try catch包裹，请求失败的时候就执行catch里的
+      try {
+        let caseFour = await this.$api.matches.caseFour();
+        this.example = caseFour.data;
+      } catch (e) {
+        console.log("​catch -> e", e);
+      }
+    },
+    async _caseEight() {
+      //局部引用不用写this
+      // 这里用try catch包裹，请求失败的时候就执行catch里的
+      try {
+        let caseEight = await this.$api.matches.caseEight();
+        this.caseEight = caseEight.data;
+      } catch (e) {
+        console.log("​catch -> e", e);
+      }
+    }
   }
 };
 </script>
@@ -70,7 +77,7 @@ export default {
 .demo {
   display: inline-block;
   width: 285px;
-  height:334px;
+  height: 334px;
   margin: 5px;
   -webkit-box-sizing: padding-box;
   box-sizing: padding-box;
@@ -87,8 +94,8 @@ export default {
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
-.demo img{
-  width:285px;
+.demo img {
+  width: 285px;
   height: 334px;
 }
 img {

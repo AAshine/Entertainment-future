@@ -1,15 +1,15 @@
 <template>
     <div class="teacherOneTab">
-        <div class="teacherContent" v-for="(item,index) in newList" :key="index">
+        <div class="teacherContent" v-for="(item,index) in caseEight" :key="index">
             <div class="teacherTxtImg">
                 <div class="teacherImg">
-                    <img :src="item.imgUrl" alt="">
+                    <img :src="couldUrl+item.imgUrl" alt="">
                 </div>
                 <div class="teacherTxt">
-                    <div class="bigVname"><p>{{item.newTitle}}</p></div>
+                    <div class="bigVname"><p>{{item.name}}</p></div>
                     <div class="teacherBottom">
-                        <span><i class="icon-yanjing-"></i>{{item.newRead}}</span>
-                        <span><i class="icon-fensi"></i>666</span>
+                        <span><i class="icon-yanjing-"></i>{{item.click}}</span>
+                        <span><i class="icon-fensi"></i>{{item.fans}}</span>
                     </div>
                 </div>
             </div>
@@ -18,52 +18,9 @@
 </template>
 <script>
 export default {
-    data(){
-        return{
-            newList:[
-                {
-                    newTitle:'大V1号',
-                    imgUrl:require('../../../../assets/images/teacher1.png'),
-                    newRead:'980'
-                },
-                {
-                    newTitle:'大V1号',
-                    imgUrl:require('../../../../assets/images/teacher1.png'),
-                    newRead:'983'
-                },
-                {
-                    newTitle:'大V1号',
-                    imgUrl:require('../../../../assets/images/teacher1.png'),
-                    newRead:'982'
-                },
-                                {
-                    newTitle:'大V1号',
-                    imgUrl:require('../../../../assets/images/teacher1.png'),
-                    newRead:'981'
-                },
-                {
-                    newTitle:'大V1号',
-                    imgUrl:require('../../../../assets/images/teacher1.png'),
-                    newRead:'981'
-                },
-                {
-                    newTitle:'大V1号',
-                    imgUrl:require('../../../../assets/images/teacher1.png'),
-                    newRead:'981'
-                },
-                {
-                    newTitle:'大V1号',
-                    imgUrl:require('../../../../assets/images/teacher1.png'),
-                    newRead:'981'
-                },
-                {
-                    newTitle:'大V1号',
-                    imgUrl:require('../../../../assets/images/teacher1.png'),
-                    newRead:'981'
-                }
-                
-            ]
-        }
+    props:{
+        caseEight:{},
+        couldUrl:{}
     }
 }
 </script>

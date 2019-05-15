@@ -6,12 +6,12 @@
           <h3>优秀案例</h3>
         </div>
         <div class="specialImg">
-          <div class="demo specialDeom" v-for="(item, index) in specialImg" :key="index">
+          <div class="demo specialDeom" v-for="(item, index) in caseFour" :key="index">
             <figure class="imghvr-push-down">
-              <img :src="item.imgUrl" alt="example-image">
+              <img :src="couldUrl+item.imgUrl" alt="example-image">
               <figcaption>
-                <h3>Hello World</h3>
-                <p>Life is too important to be taken seriously!</p>
+                <h3>{{item.name}}</h3>
+                <p>{{item.details}}</p>
               </figcaption>
               <a href="javascript:;"></a>
             </figure>
@@ -23,9 +23,9 @@
       <h3>合作机构</h3>
     </div>
     <div class="pictureImg">
-      <div class="demo hezuodemo" v-for="(item, index) in hezuo" :key="index">
+      <div class="demo hezuodemo" v-for="(item, index) in companyMessage" :key="index">
         <figure class="imghvr-slide-up">
-          <img :src="item.imgUrl" alt="example-image">
+          <img :src="couldUrl+item.imgUrl" alt="example-image">
           <figcaption>
             <div class="txt">{{item.name}}</div>
           </figcaption>
@@ -36,37 +36,46 @@
       <h3>联系我们</h3>
     </div>
     <div class="contactMessage">
-        <div class="messageLeft">
-            <collegeMessage/>
-        </div>
-        <div class="mapRight">
-  <baidu-map class="bm-view" ak="Q6IDvIAnUWcKgx3qIE6kABLwlnrEfq8B" 
+      <div class="messageLeft">
+        <collegeMessage/>
+      </div>
+      <div class="mapRight">
+        <baidu-map
+          class="bm-view"
+          ak="Q6IDvIAnUWcKgx3qIE6kABLwlnrEfq8B"
           :center="center"
           :zoom="zoom"
-          @ready="handler"
-
-          >
-  </baidu-map>
-  <div></div>
-        </div>
+          @ready="handlerMap"
+        >
+          <bm-geolocation
+            anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
+            :showAddressBar="true"
+            :autoLocation="true"
+          ></bm-geolocation>
+        </baidu-map>
+      </div>
     </div>
   </div>
 </template>
 <script>
-import collegeMessage from '../about/collegeMessage'
-import BaiduMap from 'vue-baidu-map/components/map/Map.vue'
-
+import collegeMessage from "../about/collegeMessage";
+import BaiduMap from "vue-baidu-map/components/map/Map.vue";
+import BmGeolocation from "vue-baidu-map/components/controls/Geolocation.vue";
 export default {
   name: "collegeSpecial",
-  components:{
-      collegeMessage,
-      BaiduMap
+  components: {
+    collegeMessage,
+    BaiduMap,
+    BmGeolocation
   },
-  
+
   data() {
     return {
-        center:{lang:1,lat:0},
-        zoom:3,
+      center: { lang: 1, lat: 0 },
+      zoom: 3,
+      caseFour: [],
+      couldUrl: "http://file.kxdz2.com/",
+      companyMessage: [],
       backnote: {
         backgroundImage:
           "url(" +
@@ -76,79 +85,36 @@ export default {
       backnotecc: {
         backgroundImage:
           "url(" + require("../../../../assets/images/home/zhezhao.png") + ")"
-      },
-      specialImg: [
-        {
-          imgUrl: require("../../../../assets/images/home/special1.png")
-        },
-        {
-          imgUrl: require("../../../../assets/images/home/special2.png")
-        },
-        {
-          imgUrl: require("../../../../assets/images/home/special3.png")
-        },
-        {
-          imgUrl: require("../../../../assets/images/home/special4.png")
-        }
-      ],
-      hezuo: [
-        {
-          name: "值得买",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "浙江大学",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "小红书",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "博多集团",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "值得买",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "浙江大学",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "小红书",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "博多集团",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "值得买",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "浙江大学",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "小红书",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        },
-        {
-          name: "博多集团",
-          imgUrl: require("../../../../assets/images/home/ke1.png")
-        }
-      ]
+      }
     };
   },
-  methods:{
-       handler ({BMap, map}) {
-      console.log(BMap, map)
-      this.center.lng = 120.110812
-      this.center.lat = 30.361959
-      this.zoom = 15
+  created() {
+    this._caseFour();
+    this._companyMessage();
+  },
+  methods: {
+    handlerMap({ BMap, map }) {
+      this.center.lng = 120.110812;
+      this.center.lat = 30.361959;
+      this.zoom = 15;
+    },
+    async _caseFour() {
+      try {
+        let res = await this.$api.matches.matches();
+        this.caseFour = res.data;
+      } catch (e) {
+        console.log("​catch -> e", e);
+      }
+    },
+    async _companyMessage() {
+      //局部引用不用写this
+      // 这里用try catch包裹，请求失败的时候就执行catch里的
+      try {
+        let companyMessage = await this.$api.matches.companyMessage();
+        this.companyMessage = companyMessage.data;
+      } catch (e) {
+        console.log("​catch -> e", e);
+      }
     }
   }
 };
@@ -158,6 +124,11 @@ export default {
   width: 100%;
   height: 100%;
 }
+
+.anchorBL {
+  display: none;
+}
+
 .txt {
   text-align: center;
 }
@@ -168,7 +139,8 @@ export default {
   padding-bottom: 100px;
 
   & img {
-    max-width:300px;
+    max-width: 300px;
+    height: 500px;
   }
 }
 
@@ -176,23 +148,31 @@ export default {
   width: 1200px;
   margin: 0 auto;
 }
-.specialDeom{
-  width:300px;
-  height:500px
+
+.specialDeom {
+  height: 500px;
 }
+
 .demo {
   display: inline-block;
   -webkit-box-sizing: padding-box;
   box-sizing: padding-box;
 }
-.hezuodemo{
-  border 1px solid #e1e1e1;
-  width 150px;
-  }
+
+.demo p {
+  padding: 5px;
+}
+
+.hezuodemo {
+  border: 1px solid #e1e1e1;
+  width: 150px;
+}
+
 .hezuodemo img {
-  width 150px;
-  max-height 70px;
-  }
+  width: 150px;
+  max-height: 70px;
+}
+
 .demo textarea {
   -webkit-box-sizing: padding-box;
   box-sizing: padding-box;
@@ -235,18 +215,24 @@ img {
 .pictureImg {
   max-width: 1200px;
   margin: 0 auto;
-  border 1px solid #e1e1e1
+  border: 1px solid #e1e1e1;
 }
-.contactMessage
-    display flex
-    justify-content center
-    margin-bottom 20px
-.mapRight
-    width 600px
-    margin-left 50px
-.messageLeft
-  width 570px
-  height 500px
-  border 1px solid #f5f5f5
+
+.contactMessage {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.mapRight {
+  width: 600px;
+  margin-left: 50px;
+}
+
+.messageLeft {
+  width: 570px;
+  height: 500px;
+  border: 1px solid #f5f5f5;
   padding-right: 40px;
+}
 </style>

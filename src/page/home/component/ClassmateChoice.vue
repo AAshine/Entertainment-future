@@ -26,7 +26,7 @@ export default {
     data(){
       return {
           classmateDate:[],
-          couldUrl:'http://ppdeo8e31.bkt.clouddn.com/'
+          couldUrl:'http://file.kxdz2.com/'
       }
   },
 created() {
@@ -38,7 +38,6 @@ created() {
       try {
         let res = await this.$api.matches.matches()
         this.classmateDate = res.data
-        console.log(res)
       } catch (e) {
         console.log('​catch -> e', e)
       }

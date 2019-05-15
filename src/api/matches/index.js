@@ -28,6 +28,17 @@ export default {
   StudentA(params){
     return api.get(urls.StudentA,params, header)
   },
+  //4 条案例
+  caseFour(params){
+    return api.get(urls.caseFour,params, header)
+  },
+  companyMessage(params){
+    return api.get(urls.companyMessage,params, header)
+  },
+    //8 条案例
+  caseEight(params){
+    return api.get(urls.caseEight,params, header)
+  },
   //新闻总列表分页
   newsAll() {
     return urls.newsAll
@@ -56,8 +67,20 @@ export default {
   caseArt() {
     return urls.caseArt
   },
+  indexMessage(){
+    return urls.indexMessage
+  },
   //根据分类调用课程信息
-  classCase(params){
-    return api.get(urls.classCase,params, header)
-  }
+  classCase(){
+    // return api.get(urls.classCase,params, header)
+    return urls.classCase
+  },
+  //公司配置信息
+  companyGobel(){
+    return urls.companyGobel
+  },
+  //首页轮播
+  indexBanner(params){
+    return api.get(urls.indexBanner,params, header)
+  },
 }

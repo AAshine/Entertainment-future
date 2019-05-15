@@ -25,5 +25,17 @@ export default {
   hotclass:baseUrl+'/api/yw/app/course/home-list',
   StudentA:baseUrl + '/api/yw/app/student/list-best',
   //根据分类调用课程信息
-  classCase:baseUrl+'/api/yw/app/course/list-category'
+  classCase:baseUrl+'/api/yw/app/course/list-category',
+  //首页留言接口
+  indexMessage:baseUrl+'/api/yw/app/message/home-save',
+  //调用案例展示四条信息
+  caseFour:baseUrl + '/api/yw/app/case/list-best',
+  //调用案例展示八条
+  caseEight:baseUrl+'/api/yw/app/case/list-v',
+  //调用公司基本信息
+  companyMessage: baseUrl+ '/api/yw/app/cooperation/list-all',
+  //公司配置信息
+  companyGobel:baseUrl+'/api/yw/app/config/find-value',
+  //首页banner
+  indexBanner:baseUrl+'/api/yw/app/banner/shuffling'
 }

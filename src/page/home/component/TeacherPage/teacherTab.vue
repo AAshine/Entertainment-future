@@ -74,7 +74,7 @@ export default {
       pages: 1,
       pageSize: 6,
       currentPage: 1,
-      couldUrl: "http://ppdeo8e31.bkt.clouddn.com/"
+      couldUrl: "http://file.kxdz2.com/"
     };
   },
   created() {
@@ -141,7 +141,6 @@ export default {
     },
     handleCurrentChange3(val) {
       this.currentPage = val;
-      console.log(this.currentPage);
       this._caseAll();
     },
       //达人
@@ -157,7 +156,6 @@ export default {
         .then(res => {
           this.totaldaren = res.data.data.total;
           this.darenlist = res.data.data.list;
-          console.log(this.darenlist)
         });
     },
     handleCurrentChange4(val) {

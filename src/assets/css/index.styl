@@ -87,6 +87,12 @@ body, dl, dd, h1, h2, h3, h4, h5, h6, p, form
     justify-content: center
 .classmateChoice
     padding 10px
+    & .classmateNumber:hover
+        border: 1px solid rgba(227, 227, 227, 1);
+        box-shadow: 0 0 10px 6px rgba(227, 227, 227, 0.35);
+        color: rgba(147, 8, 197, 1);
+        transition: all 0.7s;
+        cursor pointer
     & .classmateNumber
         border 1px solid #e1e1e1
         width 285px
@@ -123,10 +129,10 @@ body, dl, dd, h1, h2, h3, h4, h5, h6, p, form
     position: relative;
     width: 100%;
     overflow: hidden;
-    height: 540px;
+    height: 640px;
   }
   .slider-imgcontainer {
-    margin-top:40px;
+    margin-top:80px;
     position: absolute;
     left: 0;
     width: 400%;
@@ -134,8 +140,8 @@ body, dl, dd, h1, h2, h3, h4, h5, h6, p, form
   }
 #CourserDetails img {
     width: 25%;
-    height: 520px;
-    max-height: 520px;
+    height: 600px;
+    max-height: 600px;
     cursor: pointer;
   }
   .slider-buttons {

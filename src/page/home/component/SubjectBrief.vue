@@ -18,32 +18,9 @@ export default {
   name: 'subjectBrief',
   data(){
     return{
-          textData:[
-      {
-        icons:'icon-peixun',
-        name:'抖音培训',
-        description:'个人和机构都不容错过的抖音运营实战课程个人和机构都不容错过的抖音'
-      },
-      {
-        icons:'icon-hua',
-        name:'委托培养',
-        description:'您的需求我们提供,您的未来我们保障'
-      },
-      {
-        icons:'icon-talent',
-        name:'人才预定',
-        description:'您的需求我们提供,您的未来我们保障'
-      },
-      {
-        icons:'icon-quaility',
-        name:'达人输出',
-        description:'您的高度我们制定您的热度我们制定输出'
-      }
-    ]
+          textData:[]
     }
-  },
-  methods:{
- }
+  }
 }
 </script>
 <style lang="stylus" scoped>

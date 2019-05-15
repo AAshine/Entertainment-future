@@ -10,27 +10,32 @@ import about from '@/page/home/about'
 import casePage from '@/page/home/casePage'
 import newsDetails from '@/page/home/newsDetails'
 import teacherDetails from '@/page/home/teacherDetails'
+import mapping from './meta'
 Vue.use(Router)
 export default new Router({
   routes: [
     {
       path: '/',
-      component: Home
+      component: Home,
+      meta: mapping.home
     },
     {
       path: '/classmate',
       name:'classmate',
       component: ClassMate,
+      meta: mapping.news
     },
     {
       path: '/talent',
       name:'talent',
       component: TalentPage,
+      meta: mapping.talent
     },
     {
       path: '/business',
       name:'/business',
       component: TeacherPage,
+      meta: mapping.business
     },
     {
       path: '/news/:id',
@@ -41,16 +46,19 @@ export default new Router({
       path: '/news',
       name:'news',
       component: NewsPage,
+      meta: mapping.news
     },
     {
       path:'/casedo',
       name:'casedo',
       component:caseMessage,
+      meta: mapping.casedo
     },
     {
       path:'/about',
       name:'about',
-      component:about
+      component:about,
+      meta: mapping.about
     },
     {
       path:'/casePage/:id',

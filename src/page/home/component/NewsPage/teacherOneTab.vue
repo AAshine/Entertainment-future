@@ -47,6 +47,7 @@ export default {
     padding 5px
     max-width 250px
     max-height 362px
+    cursor pointer
 .teacherContent img
     width 250px
     height 260px

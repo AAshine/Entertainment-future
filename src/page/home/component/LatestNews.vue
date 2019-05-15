@@ -46,7 +46,7 @@ export default {
             doubt: '1',
             newsContent:[],
             questionanswer:[],
-            couldUrl:'http://ppdeo8e31.bkt.clouddn.com/'
+            couldUrl:'http://file.kxdz2.com/'
         }
     },
     created() {

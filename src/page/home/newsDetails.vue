@@ -30,8 +30,9 @@
           <img :src="couldUrl+caselID.imgUrl" alt>
         </div>
         <div class="updown">
-          <span @click="jumpUp">上一篇:{{uptitle}}</span>
-          <span @click="jumpNext">下一篇:{{nexttitle}}</span>
+          <!-- @click="jumpUp" @click="jumpNext" -->
+          <span @click="jumpUp">上一篇:{{uptitle}} {{caselID.beforeTitle}}</span>
+          <span @click="jumpNext">下一篇:{{nexttitle}} {{caselID.nextTitle}}</span>
         </div>
         <hotarticle :hotart="hotart" :key="key"></hotarticle>
       </div>
@@ -71,7 +72,7 @@ export default {
       nextID: null,
       Uptitlename: null,
       show: true,
-      couldUrl: "http://ppdeo8e31.bkt.clouddn.com/"
+      couldUrl: "http://file.kxdz2.com/"
     };
   },
   watch: {
@@ -79,7 +80,8 @@ export default {
     $route: {
       handler: function(val, oldVal) {
         if (val.name === "newsDetails") {
-          this._creatview(), this._nextID(), this._newlistid();
+          this._creatview();
+          // , this._nextID(), this._newlistid();
         }
       }
     }
@@ -93,14 +95,17 @@ export default {
     }
   },
   created() {
-    this._creatview(), this._newlistid(), this._nextID();
+    this._creatview();
+    this._hotart();
+    // , this._newlistid(), this._nextID();
   },
   methods: {
-    async _newlistid() {
+    async _hotart() {
+      //局部引用不用写this
       // 这里用try catch包裹，请求失败的时候就执行catch里的
       try {
-        let newlistid = await this.$api.matches.newlistid();
-        this.newlistid = newlistid.data;
+        let hotres = await this.$api.matches.hotlist();
+        this.hotart = hotres.data;
       } catch (e) {
         console.log("​catch -> e", e);
       }
@@ -119,44 +124,11 @@ export default {
         console.log("​catch -> e", e);
       }
     },
-    async _nextID() {
-      try {
-        let newID = this.$route.params.id;
-        let current = await this.$api.matches.newArt();
-        let newlistid = await this.$api.matches.newlistid();
-        for (let j = 0; j < this.newlistid.length; j++) {
-          if (j < this.newlistid.length) {
-            if (this.newlistid[j] == newID) {
-              //获取下一页的数据
-              if (j+1 < this.newlistid.length) {
-                axios.get(current + `${newlistid.data[j + 1]}`).then(res => {
-                  this.nexttitle = res.data.data.title;
-                  this.NextContent = res.data.data;
-                });
-              }else {
-                this.nexttitle = '已经是最后一篇了'
-              }
-              //获取上一页的数据
-              if (newlistid.data[j - 1] > 0) {
-                axios.get(current + `${newlistid.data[j - 1]}`).then(res => {
-                  this.uptitle = res.data.data.title;
-                  this.UpContent = res.data.data;
-                });
-              }else{
-                this.uptitle = '没有上一篇啦'
-              }
-            }
-          }
-        }
-      } catch (e) {
-        console.log("​catch -> e", e);
-      }
-    },
     jumpUp(item) {
       this.$router.push({
         name: "newsDetails",
         params: {
-          id: this.UpContent.id
+          id: this.caselID.beforeId
         }
       });
     },
@@ -164,11 +136,86 @@ export default {
       this.$router.push({
         name: "newsDetails",
         params: {
-          id: this.NextContent.id
+          id: this.caselID.nextId
         }
       });
     }
   }
+  // methods: {
+  //   async _newlistid() {
+  //     // 这里用try catch包裹，请求失败的时候就执行catch里的
+  //     try {
+  //       let newlistid = await this.$api.matches.newlistid();
+  //       this.newlistid = newlistid.data;
+  //       console.log(this.newlistid )
+  //     } catch (e) {
+  //       console.log("​catch -> e", e);
+  //     }
+  //   },
+  //   async _creatview() {
+  //     // 这里用try catch包裹，请求失败的时候就执行catch里的
+  //     let caselID = this.$route.params.id;
+  //     try {
+  //       let current = await this.$api.matches.newArt();
+  //       //拿到news api public
+  //       const url = current + `${caselID}`;
+  //       axios.get(url).then(res => {
+  //         this.caselID = res.data.data;
+  //       });
+  //     } catch (e) {
+  //       console.log("​catch -> e", e);
+  //     }
+  //   },
+  //   async _nextID() {
+  //     try {
+  //       let newID = this.$route.params.id;
+  //       let current = await this.$api.matches.newArt();
+  //       let newlistid = await this.$api.matches.newlistid();
+  //       for (let j = 0; j < this.newlistid.length; j++) {
+  //         if (j < this.newlistid.length) {
+  //           if (this.newlistid[j] == newID) {
+  //             //获取下一页的数据
+  //             if (j+1 < this.newlistid.length) {
+  //               axios.get(current + `${newlistid.data[j + 1]}`).then(res => {
+  //                 this.nexttitle = res.data.data.title;
+  //                 this.NextContent = res.data.data;
+  //               });
+  //             }else {
+  //               this.nexttitle = '已经是最后一篇了'
+  //             }
+  //             //获取上一页的数据
+  //             if (newlistid.data[j - 1] > 0) {
+  //               axios.get(current + `${newlistid.data[j - 1]}`).then(res => {
+  //                 this.uptitle = res.data.data.title;
+  //                 this.UpContent = res.data.data;
+  //               });
+  //             }else{
+  //               this.uptitle = '没有上一篇啦'
+  //             }
+  //           }
+  //         }
+  //       }
+  //     } catch (e) {
+  //       console.log("​catch -> e", e);
+  //     }
+  //   },
+  //   jumpUp(item) {
+  //     this.$router.push({
+  //       name: "newsDetails",
+  //       params: {
+  //         id: this.UpContent.id
+  //       }
+  //     });
+  //   },
+  //   jumpNext(item) {
+  //     this.$router.push({
+  //       name: "newsDetails",
+  //       params: {
+  //         id: this.NextContent.id
+  //       }
+  //     });
+  //   }
+  // }
 };
 </script>
 <style lang="stylus" scoped>

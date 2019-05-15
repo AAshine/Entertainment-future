@@ -53,7 +53,55 @@ let date = new Date(value);
     s = s < 10 ? ('0' + s) : s;
     return y + '-' + MM + '-' + d
 })
+const mappingFull = {}
+router.beforeEach((to, from, next) => {
+  const matchPath = to.matched.slice().reverse();
+  const meta = mappingFull[to.fullPath];
+  // console.log(to.fullPath);   // 可以打印输出
+  // console.log(meta);
+  let nearestWithTitle = undefined;
+  let nearestWithMeta = undefined;
+  if (meta) {
+    nearestWithTitle = { meta };
+    nearestWithMeta = { meta };
+  } else {
+    nearestWithTitle = matchPath.find(r => r.meta && r.meta.title);
+    nearestWithMeta = matchPath.find(r => r.meta && r.meta.metaTags);
+  }
 
+  if(nearestWithTitle) document.title = nearestWithTitle.meta.title;
+  Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(el => el.parentNode.removeChild(el));
+  if(!nearestWithMeta) return next();
+  nearestWithMeta.meta.metaTags.map(tagDef => {
+    const tag = document.createElement('meta');
+    Object.keys(tagDef).forEach(key => {
+      tag.setAttribute(key, tagDef[key]);
+    });
+    tag.setAttribute('data-vue-router-controlled', '');
+    return tag;
+  })
+  .forEach(tag => document.head.appendChild(tag));
+
+  if (to.need && to.need.requireAuth) {
+    if (store.getters.token) { 
+      next();
+    }
+    else {
+      next('/home');
+      // next({
+      //   path: '/login',
+      //   query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
+      // });
+    }
+  }
+  else {
+    next();
+  }
+});
+
+router.afterEach((to,from,next) => {
+    window.scrollTo(0,0);
+})
 var formatDate = Vue.filter('formatDate')
 new Vue({
   el: '#app',

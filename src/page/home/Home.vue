@@ -1,53 +1,54 @@
 <template>
   <div class="home">
-        <div class="bannerImg"><img src="../../assets/images/home/banner1.png"></div>
-        <!-- <home-swiper/> -->
-        <home-summary/>
-          <div class="TitlePublic">
-              <h3>课程介绍</h3>
-          </div>
-        <SubjectBrief/>
-        <div class="addStrip">
-          <div class="iconZero">
-            <i class="icon-liwu"></i>
-          </div>
-          <div class="addtext">已经有四千万人加入了我们的俱乐部，这是第一步！</div>
-          <div class="addBtn">点击加入</div>
-        </div>
-        <div class="TitlePublic">
-              <h3>成功案例</h3>
-          </div>
-          <ClassmateChoice></ClassmateChoice>
-          <CustomerReviews/>
-          <LatestNews/>
-          <div class="TitlePublic">
-              <h3>师资力量</h3>
-          </div>
-          <TeacherPower/>
-          <div class="TitlePublic">
-              <h3>灵活选择</h3>
-          </div>
-          <Choice/>
-        <HomeFooter/>
-      <back-top :scrollmyself='true'></back-top>
-  </div>  
-  
+    <CouserDetails :couldUrl="couldUrl" :indexBanner="indexBanner"></CouserDetails>
+    <!-- <home-swiper/> -->
+    <home-summary></home-summary>
+    <div class="TitlePublic">
+      <h3>课程介绍</h3>
+    </div>
+    <SubjectBrief/>
+    <div class="addStrip">
+      <div class="iconZero">
+        <i class="icon-liwu"></i>
+      </div>
+      <div class="addtext">已经有四千万人加入了我们的俱乐部，这是第一步！</div>
+      <div class="addBtn">点击加入</div>
+    </div>
+    <div class="TitlePublic">
+      <h3>成功案例</h3>
+    </div>
+    <ClassmateChoice></ClassmateChoice>
+    <CustomerReviews/>
+    <LatestNews/>
+    <div class="TitlePublic">
+      <h3>师资力量</h3>
+    </div>
+    <TeacherPower/>
+    <div class="TitlePublic">
+      <h3>灵活选择</h3>
+    </div>
+    <Choice/>
+    <HomeFooter></HomeFooter>
+    <back-top :scrollmyself="true"></back-top>
+  </div>
 </template>
 <script scoped>
-import HomeSwiper from './component/HomeSwiper'
-import HomeSummary from './component/HomeSummary'
-import SubjectBrief from './component/SubjectBrief'
-import ClassmateChoice from './component/ClassmateChoice'
-import CustomerReviews from './component/CustomerReviews'
-import LatestNews from './component/LatestNews'
-import TeacherPower from './component/TeacherPower'
-import Choice from './component/Choice'
-import HomeFooter from './component/HomeFooter'
+import axios from "axios";
+import CouserDetails from "./component/table/CourseDetails";
+import HomeSwiper from "./component/HomeSwiper";
+import HomeSummary from "./component/HomeSummary";
+import SubjectBrief from "./component/SubjectBrief";
+import ClassmateChoice from "./component/ClassmateChoice";
+import CustomerReviews from "./component/CustomerReviews";
+import LatestNews from "./component/LatestNews";
+import TeacherPower from "./component/TeacherPower";
+import Choice from "./component/Choice";
+import HomeFooter from "./component/HomeFooter";
 // import Loading from './component/Loading'
-import BackTop from './component/BackTop/src/BackTop'
+import BackTop from "./component/BackTop/src/BackTop";
 export default {
-  name:'Home',
-  components:{
+  name: "Home",
+  components: {
     // Loading,
     HomeSwiper,
     HomeSummary,
@@ -58,16 +59,72 @@ export default {
     TeacherPower,
     Choice,
     HomeFooter,
-    BackTop
+    BackTop,
+    CouserDetails
+  },
+  data() {
+    return {
+      ABOUT_ME: "ABOUT_ME",
+      ASD: "ASD",
+      indexBanner: null,
+      couldUrl: "http://file.kxdz2.com/"
+    };
+  },
+  created() {
+    this._companyGobel();
+    this._indexBanner();
+  },
+  methods: {
+    async _companyGobel() {
+      // 这里用try catch包裹，请求失败的时候就执行catch里的
+      try {
+        let current = await this.$api.matches.companyGobel();
+        axios
+          .get(current, {
+            params: {
+              key: this.ABOUT_ME
+            }
+          })
+          .then(res => {
+            this.aboutMe = res.data.data;
+            console.log(this.aboutMe);
+          });
+        axios
+          .get(current, {
+            params: {
+              key: this.ASD
+            }
+          })
+          .then(res => {
+            this.ASD = res.data.data;
+            console.log(this.ASD);
+          });
+      } catch (e) {
+        console.log("​catch -> e", e);
+      }
+    },
+    //轮播
+    async _indexBanner() {
+      try {
+        let indexBanner = await this.$api.matches.indexBanner();
+        this.indexBanner = indexBanner.data;
+        console.log(this.indexBanner);
+      } catch (e) {
+        console.log("​catch -> e", e);
+      }
+    }
   }
-}
+};
 </script>
 // 只在当前vue模板文件中有效
 <style lang="stylus">
-.bannerImg
-    height 600px
-.bannerImg img
-    width 100%
-    height 100%
-    padding-top: 80px;
+.bannerImg {
+  height: 600px;
+}
+
+.bannerImg img {
+  width: 100%;
+  height: 100%;
+  padding-top: 80px;
+}
 </style>
