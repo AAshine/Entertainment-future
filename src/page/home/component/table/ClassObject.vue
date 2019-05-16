@@ -75,14 +75,14 @@ export default {
     return {
       // navList: [],
       valueDisabled: 5,
-      couldUrl: "http://file.kxdz2.com/",
+      couldUrl: this.GLOBAL.couldurl,
       currentIndex: 0,
       timer: null,
       buttons: [0, 1, 2, 3],
       currentNumber: 0
     };
   },
-  created(){
+  created() {
     this.currentNumber = this.currentIndex;
   },
   methods: {

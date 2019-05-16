@@ -74,7 +74,7 @@ export default {
       center: { lang: 1, lat: 0 },
       zoom: 3,
       caseFour: [],
-      couldUrl: "http://file.kxdz2.com/",
+      couldUrl: this.GLOBAL.couldurl,
       companyMessage: [],
       backnote: {
         backgroundImage:

@@ -15,7 +15,7 @@ import ClassObject from "../table/ClassObject";
 export default {
   props: {
     show: {},
-    navList: {},
+    navList: {}
   },
   name: "ClassTab",
   components: {
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       classCase: [],
-      couldUrl: "http://file.kxdz2.com/",
+      couldUrl: this.GLOBAL.couldurl,
       currentIndex: 0,
       buttons: [0, 1, 2],
       timer: null,
@@ -54,5 +54,4 @@ export default {
 #classTab .ivu-tabs-ink-bar {
   background-color: #9208c5;
 }
-
 </style>

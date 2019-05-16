@@ -34,16 +34,16 @@ export default {
   data() {
     return {
       example: [],
-      caseEight:[],
-      couldUrl:'http://file.kxdz2.com/'
+      caseEight: [],
+      couldUrl: this.GLOBAL.couldurl
     };
   },
   components: {
     bigVnumber
   },
   created() {
-    this._caseFour()
-    this._caseEight()
+    this._caseFour();
+    this._caseEight();
   },
   methods: {
     async _caseFour() {

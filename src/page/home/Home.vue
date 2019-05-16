@@ -69,7 +69,7 @@ export default {
       YWADDRESS: "YWADDRESS",
       YWEMAIL: "YWEMAIL",
       indexBanner: null,
-      couldUrl: "http://file.kxdz2.com/"
+      couldUrl: this.GLOBAL.couldurl
     };
   },
   created() {
@@ -126,6 +126,7 @@ export default {
       try {
         let indexBanner = await this.$api.matches.indexBanner();
         this.indexBanner = indexBanner.data;
+        console.log(this.indexBanner)
       } catch (e) {
         console.log("​catch -> e", e);
       }

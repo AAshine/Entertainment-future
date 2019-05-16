@@ -37,7 +37,7 @@ export default {
       slideList: [],
       currentIndex: 0,
       timer: "",
-      couldUrl: "http://file.kxdz2.com/"
+      couldUrl: this.GLOBAL.couldurl
     };
   },
   components: {

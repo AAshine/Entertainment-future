@@ -74,7 +74,7 @@ export default {
       pages: 1,
       pageSize: 6,
       currentPage: 1,
-      couldUrl: "http://file.kxdz2.com/"
+      couldUrl: this.GLOBAL.couldurl
     };
   },
   created() {

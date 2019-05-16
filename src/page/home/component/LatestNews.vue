@@ -46,7 +46,7 @@ export default {
             doubt: '1',
             newsContent:[],
             questionanswer:[],
-            couldUrl:'http://file.kxdz2.com/'
+            couldUrl:this.GLOBAL.couldurl
         }
     },
     created() {

@@ -1,129 +1,161 @@
 <template>
-    <div class="DetailsPage">
-      <div class="bannerImg"><img src="../../assets/images/home/banner1.png"></div>
-<div class="doubleDD">
-        <div class="detailLeft">
+  <div class="DetailsPage">
+    <div class="bannerImg">
+      <img src="../../assets/images/home/banner1.png">
+    </div>
+    <div class="doubleDD">
+      <div class="detailLeft">
         <div class="title">{{detailData.name}}</div>
         <div class="titleBr"></div>
         <div class="simpleMess">
-          <div class="simpletime">时间：<span>{{detailData.updateTime | formatDate}}</span></div>
-          <div class="simpletime">来源：<span>{{detailData.sortNum}}</span></div>
-          <div class="simpletime">作者：<span>{{detailData.operator}}</span></div>
-          <div class="simpletime">点击：<span>{{detailData.click}}</span></div>
+          <div class="simpletime">
+            时间：
+            <span>{{detailData.updateTime | formatDate}}</span>
+          </div>
+          <div class="simpletime">
+            来源：
+            <span>{{detailData.sortNum}}</span>
+          </div>
+          <div class="simpletime">
+            作者：
+            <span>{{detailData.operator}}</span>
+          </div>
+          <div class="simpletime">
+            点击：
+            <span>{{detailData.click}}</span>
+          </div>
         </div>
         <div class="content">
-          <div class="context" v-html="detailData.context">
-            
-          </div>
-          <img :src="couldUrl+detailData.imgUrl" alt="">
+          <div class="context" v-html="detailData.context"></div>
+          <img :src="couldUrl+detailData.imgUrl" alt>
         </div>
-          <div class="hotarticle">
-            <hotarticle :hotart="hotart"></hotarticle>
-          </div>
+        <div class="hotarticle">
+          <hotarticle :hotart="hotart"></hotarticle>
+        </div>
       </div>
       <div class="detailRight">
         <HotCourse/>
         <GetNow/>
         <ContactUs/>
       </div>
-</div>
     </div>
+  </div>
 </template>
 <script>
-import axios from 'axios'
-import HotCourse from '../../components/HotCourse'
-import GetNow from '../../components/GetNow'
-import ContactUs from '../../components/ContactUs'
-import hotarticle from '../../components/hotarticle'
+import axios from "axios";
+import HotCourse from "../../components/HotCourse";
+import GetNow from "../../components/GetNow";
+import ContactUs from "../../components/ContactUs";
+import hotarticle from "../../components/hotarticle";
 export default {
-  name:'DetailPage',
-  components:{
-        GetNow,
-        ContactUs,
-        HotCourse,
-        hotarticle
+  name: "DetailPage",
+  components: {
+    GetNow,
+    ContactUs,
+    HotCourse,
+    hotarticle
   },
-    data(){
-      return {
-          hotart:[],//热门文章的调用
-          detailData:[],
-          couldUrl:'http://file.kxdz2.com/'
-      }
+  data() {
+    return {
+      hotart: [], //热门文章的调用
+      detailData: [],
+      couldUrl: this.GLOBAL.couldurl
+    };
   },
-    created() {
-    this._creatview(),
-    this._hotart()
+  created() {
+    this._creatview(), this._hotart();
   },
   methods: {
-          async _hotart(){
-              //局部引用不用写this
-              // 这里用try catch包裹，请求失败的时候就执行catch里的
-            try{
-              let hotres = await this.$api.matches.hotlist()
-              this.hotart = hotres.data
-              console.log(this.hotart)
-            }catch(e){
-              console.log('​catch -> e', e)
-            }
-          },
-      async  _creatview(){
-            let caselID=this.$route.params.id
-              //局部引用不用写this
-              // 这里用try catch包裹，请求失败的时候就执行catch里的
-            let detailID=this.$route.params.id
-            try{
-              let currentCase = await this.$api.matches.caseArt()
-              //拿到news api public
-              const url = currentCase+`${caselID}`
-              axios.get(url).then((res)=>{
-                this.detailData = res.data.data
-                console.log(this.detailData)
-              })
-            }catch(e){
-              console.log('​catch -> e', e)
-            }
-          },
-       //router 路由id加1 下一篇
+    async _hotart() {
+      //局部引用不用写this
+      // 这里用try catch包裹，请求失败的时候就执行catch里的
+      try {
+        let hotres = await this.$api.matches.hotlist();
+        this.hotart = hotres.data;
+        console.log(this.hotart);
+      } catch (e) {
+        console.log("​catch -> e", e);
+      }
+    },
+    async _creatview() {
+      let caselID = this.$route.params.id;
+      //局部引用不用写this
+      // 这里用try catch包裹，请求失败的时候就执行catch里的
+      let detailID = this.$route.params.id;
+      try {
+        let currentCase = await this.$api.matches.caseArt();
+        //拿到news api public
+        const url = currentCase + `${caselID}`;
+        axios.get(url).then(res => {
+          this.detailData = res.data.data;
+          console.log(this.detailData);
+        });
+      } catch (e) {
+        console.log("​catch -> e", e);
+      }
+    }
+    //router 路由id加1 下一篇
   }
-}
+};
 </script>
 <style lang="stylus" scoped>
-.doubleDD
-  display flex
-  justify-content center
-  margin-top 80px
-  margin-bottom 80px
-.detailLeft
-  width 750px
-  border 1px solid #f1f1f1
-  text-align center
-  margin-right 40px
-  & .title 
-    padding-top 40px
-    font-size 24px
-    color #333333
-.titleBr
-  width 135px
-  border 1px solid #000000
-  margin 16px auto
-.detailRight
-  width 420px
-.simpleMess 
-  display flex
-  justify-content center
-.simpleMess > div
-  margin-right 16px
-.content img
-  width 400px
-  height 300px
-.context >>> img 
-  width 400px
-  height 300px
-.context
-  padding 15px 0 15px 0
-.updown
-  display flex
-  justify-content space-around
-  padding 20px 0 20px 0
-  color #000000
+.doubleDD {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.detailLeft {
+  width: 750px;
+  border: 1px solid #f1f1f1;
+  text-align: center;
+  margin-right: 40px;
+
+  & .title {
+    padding-top: 40px;
+    font-size: 24px;
+    color: #333333;
+  }
+}
+
+.titleBr {
+  width: 135px;
+  border: 1px solid #000000;
+  margin: 16px auto;
+}
+
+.detailRight {
+  width: 420px;
+}
+
+.simpleMess {
+  display: flex;
+  justify-content: center;
+}
+
+.simpleMess > div {
+  margin-right: 16px;
+}
+
+.content img {
+  width: 400px;
+  height: 300px;
+}
+
+.context >>> img {
+  width: 400px;
+  height: 300px;
+}
+
+.context {
+  padding: 15px 0 15px 0;
+}
+
+.updown {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0 20px 0;
+  color: #000000;
+}
 </style>

@@ -52,7 +52,6 @@ export default {
           }
         ],
         age: [
-
           {
             type: "number",
             pattern: /^(?:[1-9][0-9]?|1[01][0-9]|120)$/,
@@ -92,16 +91,14 @@ export default {
         if (valid) {
           this.$Message.success("Success!");
           var that = this.formValidate;
+          var url = 'http://test.haowaisp.cn/api/yw/app/message/home-save';
           axios
-            .post(
-              "http://test.haowaisp.cn/api/yw/app/message/home-save",
-              {
-                name: that.name,
-                age: that.age,
-                phone: that.phone,
-                remark: that.remark
-              },
-            )
+            .post(url, {
+              name: that.name,
+              age: that.age,
+              phone: that.phone,
+              remark: that.remark
+            })
             .then(response => {
               console.log(response);
             })

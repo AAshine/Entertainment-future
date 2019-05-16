@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       studentUser: [],
-      couldUrl: "http://file.kxdz2.com/"
+      couldUrl: this.GLOBAL.couldurl
     };
   },
   created() {

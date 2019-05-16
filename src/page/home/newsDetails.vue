@@ -72,7 +72,7 @@ export default {
       nextID: null,
       Uptitlename: null,
       show: true,
-      couldUrl: "http://file.kxdz2.com/"
+      couldUrl: this.GLOBAL.couldurl
     };
   },
   watch: {

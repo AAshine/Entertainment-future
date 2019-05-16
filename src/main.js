@@ -15,6 +15,8 @@ Vue.use(VueAwesomeSwiper)
 Vue.use(BackTop)
 Vue.use(vuex)
 Vue.use(api)
+import global_ from './Global'//引用文件
+Vue.prototype.GLOBAL = global_//挂载到Vue实例上面
 import "../src/assets/icon/iconfont.css";
 import "swiper/dist/css/swiper.min.css";
 import "../src/assets/css/plugins.css";

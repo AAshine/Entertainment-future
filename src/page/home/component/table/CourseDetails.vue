@@ -7,10 +7,10 @@
     <!-- index -->
     <div class="slider-buttons">
       <span
-        v-for="button in buttons"
+        v-for="(button,index) in buttons"
         class="slider-imgindex"
         :class="{ 'slider-imgindex-active': currentIndex === button }"
-        @click="doTheAnimate(button)"
+        @click="doTheAnimate(index)"
       ></span>
     </div>
     <div class="slider-move"></div>
@@ -34,8 +34,9 @@ export default {
     return {
       imgs: [],
       currentIndex: 0,
-      buttons: [0, 1, 2],
-      timer: null
+      buttons: [0, 1, 2,3],
+      timer: null,
+      // buttons: this.indexBanner
     };
   },
   methods: {
@@ -51,9 +52,9 @@ export default {
         this.currentIndex = arg;
         // 鼠标点击
       } else if (typeof arg == "string") {
-        if (arg && arg === "left" && this.currentIndex <= 2) {
+        if (arg && arg === "left" && this.currentIndex <= 3) {
           this.currentIndex++;
-        } else if (arg && arg === "right" && this.currentIndex >= 1) {
+        } else if (arg && arg === "right" && this.currentIndex >= 0) {
           this.currentIndex--;
         }
         if(!this.timer) {
@@ -67,8 +68,10 @@ export default {
      * @desc 自动轮播图片
      */
     autoAnimate() {
+
+console.log(this.indexBanner)
       this.timer = setInterval(() => {
-        if(this.currentIndex === 2){
+        if(this.currentIndex === 3){
           this.currentIndex = 0;
         }else {
           this.currentIndex ++ ;

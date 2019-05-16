@@ -4,24 +4,24 @@
       <div class="HomefooterL">
         <p>Contact Us</p>
         <p>
-          <i class="icon-dizhiguanli"></i>地址:{{YWADDRESS}}
+          <i class="icon-dizhiguanli"></i>
+          地址:{{YWADDRESS}}
         </p>
         <p>
-          <i class="icon-zuoji"></i>{{YWPHONE}}
+          <i class="icon-zuoji"></i>
+          {{YWPHONE}}
         </p>
         <p>
-          <i class="icon-zuoji"></i>{{YWPHONE}}
+          <i class="icon-zuoji"></i>
+          {{YWPHONE}}
         </p>
         <p>
-          <i class="icon-youxiang"></i>邮箱:{{YWEMAIL}}
+          <i class="icon-youxiang"></i>
+          邮箱:{{YWEMAIL}}
         </p>
       </div>
       <div class="HomefooterR">
-        <form
-          @submit.prevent="submit"
-          action="http://172.18.106.160:9201/api/yw/app/message/home-save"
-          method="post"
-        >
+        <form @submit.prevent="submit" action method="post">
           <div class="formPackage">
             <div class="formPackageA" :class="{ 'form-group--error': $v.user.name.$error }">
               <input
@@ -96,10 +96,10 @@ var phone = regex("phoneNumber", /^1(3|4|5|7|8)\d{9}$/); // 手机号码校验
 var nameZN = regex("username", /^[\u4e00-\u9fa5]+$/); // 用户名校验
 var classname = regex("course", /^[\u4e00-\u9fa5]+$/);
 export default {
-  props:{
-      YWPHONE: {},
-      YWADDRESS: {},
-      YWEMAIL: {},
+  props: {
+    YWPHONE: {},
+    YWADDRESS: {},
+    YWEMAIL: {}
   },
   data() {
     return {
@@ -147,9 +147,10 @@ export default {
         setTimeout(() => {
           this.user.submitStatus = "OK";
           var data = this.user;
+          var url = 'http://test.haowaisp.cn/api/yw/app/message/home-save'
           axios
             .post(
-              "http://test.haowaisp.cn/api/yw/app/message/home-save",
+              url,
               data,
               {
                 emulateJSON: false
@@ -188,7 +189,9 @@ export default {
     align-items: center;
   }
 }
-.typo__p
-  color #f79483
-  margin 15px 0 15px 25px
+
+.typo__p {
+  color: #f79483;
+  margin: 15px 0 15px 25px;
+}
 </style>
