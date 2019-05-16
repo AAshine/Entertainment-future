@@ -83,7 +83,7 @@
               <img src="assets/images/logov2.png" alt>
             </a>
           </div>
-          <p class="m-top-40 text-black">{{aboutMe}}</p>
+          <p class="m-top-40 text-black">{{YWABOUTME}}</p>
 
           <div class="title m-top-70">
             <h2 class="text-black">娱未文化科技有限公司</h2>
@@ -138,7 +138,7 @@
                   <i class="iconsize icon-dizhiguanli iconcolor0"></i>
                 </div>
                 <div class="boxv1-item-content text-black">
-                  <p class="m-top-10 text-black">杭州市滨江区某某街道某某号某某栋层</p>
+                  <p class="m-top-10 text-black">{{YWADDRESS}}</p>
                 </div>
               </div>
             </div>
@@ -157,10 +157,7 @@
                   <i class="iconsize icon-zuoji iconcolor1"></i>
                 </div>
                 <div class="boxv1-item-content text-black">
-                  <p class="m-top-10">
-                    移动电话: (012) 345 - 6789
-                    <br>座机: 555 - 675 0037
-                  </p>
+                  <p class="m-top-10">{{YWPHONE}}</p>
                 </div>
               </div>
             </div>
@@ -180,8 +177,7 @@
                 </div>
                 <div class="boxv1-item-content text-black">
                   <p class="m-top-10">
-                    yuwei@qq.com
-                    <br>yuwei@qq.com
+                    {{YWEMAIL}}
                   </p>
                 </div>
               </div>
@@ -219,9 +215,10 @@ export default {
   data() {
     return {
       theme1: "light",
-      ABOUT_ME: "ABOUT_ME",
-      ASD: "ASD",
-      aboutMe: null
+      YWABOUTME: "YWABOUTME",
+      YWPHONE: "YWPHONE",
+      YWADDRESS: "YWADDRESS",
+      YWEMAIL: "YWEMAIL"
     };
   },
   created() {
@@ -229,26 +226,43 @@ export default {
   },
   methods: {
     async _companyGobel() {
-      // 这里用try catch包裹，请求失败的时候就执行catch里的
       try {
         let current = await this.$api.matches.companyGobel();
         axios
           .get(current, {
             params: {
-              key: this.ABOUT_ME
+              key: this.YWABOUTME
             }
           })
           .then(res => {
-            this.aboutMe = res.data.data;
+            this.YWABOUTME = res.data.data;
           });
         axios
           .get(current, {
             params: {
-              key: this.ASD
+              key: this.YWADDRESS
             }
           })
           .then(res => {
-            this.ASD = res.data.data;
+            this.YWADDRESS = res.data.data;
+          });
+        axios
+          .get(current, {
+            params: {
+              key: this.YWPHONE
+            }
+          })
+          .then(res => {
+            this.YWPHONE = res.data.data;
+          });
+        axios
+          .get(current, {
+            params: {
+              key: this.YWEMAIL
+            }
+          })
+          .then(res => {
+            this.YWEMAIL = res.data.data;
           });
       } catch (e) {
         console.log("​catch -> e", e);

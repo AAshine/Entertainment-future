@@ -5,25 +5,28 @@
     </div>
     <div class="contactUsCT">
       <p>
-        <i class="icon-dizhiguanli"></i>地址地址地址地地址地址地址地址地址址地址
+        <i class="icon-dizhiguanli"></i>
+        {{YWADDRESS}}
       </p>
       <p>
-        <i class="icon-zuoji"></i>电话：4007676-566
+        <i class="icon-zuoji"></i>
+        电话：{{YWPHONE}}
       </p>
       <p>
-        <i class="icon-youxiang"></i>邮箱:kefu@yuwei.com
+        <i class="icon-youxiang"></i>
+        邮箱:{{YWEMAIL}}
       </p>
     </div>
   </div>
 </template>
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   data() {
     return {
-      ABOUT_ME: "ABOUT_ME",
-      aboutMe:null,
-      ASD: "ASD"
+      YWPHONE: "YWPHONE",
+      YWADDRESS: "YWADDRESS",
+      YWEMAIL: "YWEMAIL"
     };
   },
   created() {
@@ -31,28 +34,34 @@ export default {
   },
   methods: {
     async _companyGobel() {
-      // 这里用try catch包裹，请求失败的时候就执行catch里的
       try {
         let current = await this.$api.matches.companyGobel();
         axios
           .get(current, {
             params: {
-              key: this.ABOUT_ME
+              key: this.YWADDRESS
             }
           })
           .then(res => {
-            this.aboutMe = res.data.data;
-            console.log(this.aboutMe)
+            this.YWADDRESS = res.data.data;
           });
         axios
           .get(current, {
             params: {
-              key: this.ASD
+              key: this.YWPHONE
             }
           })
           .then(res => {
-            this.ASD = res.data.data;
-            console.log(this.ASD)
+            this.YWPHONE = res.data.data;
+          });
+        axios
+          .get(current, {
+            params: {
+              key: this.YWEMAIL
+            }
+          })
+          .then(res => {
+            this.YWEMAIL = res.data.data;
           });
       } catch (e) {
         console.log("​catch -> e", e);

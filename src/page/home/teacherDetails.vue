@@ -59,7 +59,6 @@ export default {
             const url = `http://172.18.106.160:9201/api/yw/app/teacher/${detailID}`
             try{
               axios.get(url).then((res)=>{
-                console.log(res.data)
                 this.teacherData = res.data.data
               })
             }catch(e){

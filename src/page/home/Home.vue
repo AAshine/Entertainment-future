@@ -2,7 +2,7 @@
   <div class="home">
     <CouserDetails :couldUrl="couldUrl" :indexBanner="indexBanner"></CouserDetails>
     <!-- <home-swiper/> -->
-    <home-summary></home-summary>
+    <home-summary :YWABOUTME="YWABOUTME"></home-summary>
     <div class="TitlePublic">
       <h3>课程介绍</h3>
     </div>
@@ -28,8 +28,8 @@
       <h3>灵活选择</h3>
     </div>
     <Choice/>
-    <HomeFooter></HomeFooter>
-    <back-top :scrollmyself="true"></back-top>
+    <HomeFooter :YWPHONE="YWPHONE" :YWADDRESS="YWADDRESS" :YWEMAIL="YWEMAIL"></HomeFooter>
+    <!-- <back-top :scrollmyself="true"></back-top> -->
   </div>
 </template>
 <script scoped>
@@ -64,8 +64,10 @@ export default {
   },
   data() {
     return {
-      ABOUT_ME: "ABOUT_ME",
-      ASD: "ASD",
+      YWABOUTME: "YWABOUTME",
+      YWPHONE: "YWPHONE",
+      YWADDRESS: "YWADDRESS",
+      YWEMAIL: "YWEMAIL",
       indexBanner: null,
       couldUrl: "http://file.kxdz2.com/"
     };
@@ -82,22 +84,38 @@ export default {
         axios
           .get(current, {
             params: {
-              key: this.ABOUT_ME
+              key: this.YWABOUTME
             }
           })
           .then(res => {
-            this.aboutMe = res.data.data;
-            console.log(this.aboutMe);
+            this.YWABOUTME = res.data.data;
           });
         axios
           .get(current, {
             params: {
-              key: this.ASD
+              key: this.YWADDRESS
             }
           })
           .then(res => {
-            this.ASD = res.data.data;
-            console.log(this.ASD);
+            this.YWADDRESS = res.data.data;
+          });
+        axios
+          .get(current, {
+            params: {
+              key: this.YWPHONE
+            }
+          })
+          .then(res => {
+            this.YWPHONE = res.data.data;
+          });
+        axios
+          .get(current, {
+            params: {
+              key: this.YWEMAIL
+            }
+          })
+          .then(res => {
+            this.YWEMAIL = res.data.data;
           });
       } catch (e) {
         console.log("​catch -> e", e);
@@ -108,7 +126,6 @@ export default {
       try {
         let indexBanner = await this.$api.matches.indexBanner();
         this.indexBanner = indexBanner.data;
-        console.log(this.indexBanner);
       } catch (e) {
         console.log("​catch -> e", e);
       }

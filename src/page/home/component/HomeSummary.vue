@@ -5,7 +5,7 @@
         <div class="summaryTop">娱未文化科技有限公司</div>
         <div
           class="summaryContent"
-        >{{aboutMe}}</div>
+        >{{YWABOUTME}}</div>
         <div class="SummaryBtn">
           <a href="#">联系我们</a>
         </div>
@@ -19,11 +19,12 @@
 <script>
 import axios from 'axios'
 export default {
+  props:{
+    YWABOUTME:{}
+  },
   data(){
     return {
-      key: null,
-      ABOUT_ME:'ABOUT_ME',
-      aboutMe:null
+      key: null
     }
   },
   created() {

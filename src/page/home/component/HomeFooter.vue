@@ -4,16 +4,16 @@
       <div class="HomefooterL">
         <p>Contact Us</p>
         <p>
-          <i class="icon-dizhiguanli"></i>地址:浙江省杭州市蓝都科创园
+          <i class="icon-dizhiguanli"></i>地址:{{YWADDRESS}}
         </p>
         <p>
-          <i class="icon-zuoji"></i>0571-5656-7488
+          <i class="icon-zuoji"></i>{{YWPHONE}}
         </p>
         <p>
-          <i class="icon-zuoji"></i>0571-5656-7488
+          <i class="icon-zuoji"></i>{{YWPHONE}}
         </p>
         <p>
-          <i class="icon-youxiang"></i>邮箱:kefu@yuwei.com
+          <i class="icon-youxiang"></i>邮箱:{{YWEMAIL}}
         </p>
       </div>
       <div class="HomefooterR">
@@ -96,6 +96,11 @@ var phone = regex("phoneNumber", /^1(3|4|5|7|8)\d{9}$/); // 手机号码校验
 var nameZN = regex("username", /^[\u4e00-\u9fa5]+$/); // 用户名校验
 var classname = regex("course", /^[\u4e00-\u9fa5]+$/);
 export default {
+  props:{
+      YWPHONE: {},
+      YWADDRESS: {},
+      YWEMAIL: {},
+  },
   data() {
     return {
       user: {
